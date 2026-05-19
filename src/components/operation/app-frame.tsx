@@ -51,6 +51,11 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isLogin = pathname === "/login";
+  const isProjectHub = pathname === "/tikkiecenter/home";
+
+  if (isProjectHub) {
+    return <>{children}</>;
+  }
 
   if (isLogin) {
     return (
