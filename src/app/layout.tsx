@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   applicationName: "Tikkie Project Operation Center",
   manifest: "/manifest.webmanifest",
   icons: {
-    icon: "/TNN_A.jpg",
-    shortcut: "/TNN_A.jpg",
-    apple: "/TNN_A.jpg",
+    icon: "/tikkie-project-icon.png",
+    shortcut: "/tikkie-project-icon.png",
+    apple: "/tikkie-project-icon.png",
   },
 };
 
