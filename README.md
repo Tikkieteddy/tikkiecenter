@@ -1,137 +1,59 @@
-# EV Charge Daily Calculator
+# tikkiecenter
 
-Credit: tikkieteddielab
+Tikkie Project Operation Center is an internal request and task tracking web app for submitting work requests, tracking progress, sending email updates, and reviewing reports.
 
 © 2026 TikkieTeddie Lab | V.1.0.0
 
-เว็บแอป Responsive สำหรับบันทึกการเดินทางรายวันและคำนวณค่าชาร์จไฟรถ EV ทั้งรายวัน รายสัปดาห์ รายเดือน วิเคราะห์ตามเส้นทาง และประมาณการเดือนถัดไป
+## Scope
 
-## Features
-
-- Daily Log เพิ่ม แก้ไข ลบ รายการย้อนหลัง
-- บันทึกวันที่ ชื่อเส้นทาง ระยะทาง สถานะการชาร์จ จำนวนเงิน kWh และหมายเหตุ
-- บันทึกเวลาจอดรอเปิดแอร์ และประเมิน kWh/ค่าไฟที่ใช้ตอนจอดรอ
-- เลือกเครื่องชาร์จจากรายการ PTT, EleXa, ReverSharger, PEA VOLTA, EVolt, MEA, Spark, EA Anywhere, TOCharge, iGreen+ หรือระบุเอง
-- เก็บข้อมูลด้วย Local Storage ไม่ต้องใช้ Backend
-- Dashboard รายสัปดาห์และรายเดือน
-- Route Analysis แยกตามชื่อเส้นทาง
-- Charging Analysis วิเคราะห์ค่าเฉลี่ยบาท/kWh และบาท/ครั้งของแต่ละเครื่องชาร์จ
-- License guard ตรวจว่าเครดิต `tikkieteddielab`, footer, version และ palette audit ยังอยู่ครบ หากถูกแก้แอปจะแสดงหน้าล็อก
-- Forecast เดือนถัดไปจากค่าเฉลี่ยของเส้นทางและจำนวนครั้งที่คาดว่าจะวิ่ง
-- กราฟด้วย Recharts: ค่าใช้จ่ายรายวัน ระยะทางรายวัน และสัดส่วนค่าใช้จ่ายตามเส้นทาง
-- มีข้อมูลตัวอย่าง 7 วันเมื่อเปิดใช้งานครั้งแรก
+- Phase 1 uses email notification only.
+- n8n is prepared for a later phase but not implemented.
+- LINE OA is prepared for a later phase but not implemented.
+- Mock data is used first.
+- PostgreSQL / Supabase-ready schema is in `database/schema.sql`.
 
 ## Tech Stack
 
-- React
-- Vite
+- Next.js
+- TypeScript
 - Tailwind CSS
+- shadcn/ui-style local components
 - Recharts
-- Local Storage
+- SMTP / SendGrid / Resend-compatible email placeholder
 
-## Login
+## Main Routes
 
-แอปมี client-side login gate สำหรับครอบการใช้งาน dashboard:
+- `/login`
+- `/dashboard`
+- `/requests/new`
+- `/my-requests`
+- `/requests`
+- `/requests/TK-2026-0005`
+- `/requests/TK-2026-0005/update`
+- `/reports`
+- `/users`
+- `/notifications`
+- `/settings`
 
-```text
-Username: admin
-Password: TikkieTeddie@2026
-```
-
-Session ถูกเก็บใน Local Storage และสามารถออกจากระบบได้ด้วยปุ่ม `Logout`
-
-หลังเข้าใช้งาน สามารถไปที่ tab `Users` เพื่อ:
-
-- เพิ่ม user ใหม่
-- กำหนด role `user` หรือ `admin`
-- เปลี่ยน password ของ user
-- ลบ user ที่ไม่ใช่ default admin
-
-ข้อจำกัด: ระบบนี้เป็น login gate สำหรับ static app เท่านั้น ไม่ใช่ authentication ระดับ production เพราะไม่มี backend/server-side session หากต้องการขายเป็นระบบที่ป้องกันจริง ควรต่อ backend, database, password hashing และ auth provider เช่น Clerk/Auth0/Supabase Auth
-
-## Project Structure
-
-```text
-src/
-  App.jsx
-  main.jsx
-  index.css
-  components/
-    Charts.jsx
-    DailyLog.jsx
-    DashboardCards.jsx
-    DataTable.jsx
-    Forecast.jsx
-    MetricCard.jsx
-    MonthlyDashboard.jsx
-    RouteAnalysis.jsx
-    WeeklyDashboard.jsx
-  data/
-    sampleData.js
-  utils/
-    calculations.js
-```
-
-## Install
+## Development
 
 ```bash
 npm install
-```
-
-## Run Development Server
-
-```bash
 npm run dev
 ```
 
-เปิดเว็บที่ `http://127.0.0.1:5173`
+Open `http://127.0.0.1:3000/login`.
 
 ## Build
 
 ```bash
+npm run lint
 npm run build
 ```
 
-ผลลัพธ์ production build จะอยู่ในโฟลเดอร์ `dist/`
+## Connection Points
 
-## Deploy on Vercel
-
-นำ repository นี้ไป Import ใน Vercel ได้โดยตรง Vercel จะตรวจพบ Vite project และใช้คำสั่ง:
-
-- Build Command: `npm run build`
-- Output Directory: `dist`
-
-ไม่ต้องตั้งค่า Environment Variables เพราะข้อมูลถูกเก็บใน Local Storage ของ browser
-
-## Calculation Rules
-
-- บาทต่อกิโลเมตร = เงินค่าชาร์จรวม ÷ ระยะทางรวม
-- kWh ต่อกิโลเมตร = kWh รวม ÷ ระยะทางรวม
-- ค่าใช้จ่ายเฉลี่ยต่อวัน = เงินค่าชาร์จรวม ÷ จำนวนวันที่มีข้อมูล
-- ระยะทางเฉลี่ยต่อวัน = ระยะทางรวม ÷ จำนวนวันที่มีข้อมูล
-- ค่าไฟเฉลี่ยต่อ kWh = เงินค่าชาร์จรวม ÷ kWh รวม
-- kWh จอดรอ = จำนวนนาทีจอดรอ ÷ 60 × อัตราใช้ไฟตอนจอด (kWh/ชม.)
-- อัตราใช้ไฟตอนจอดแบบ Auto = ค่าเฉลี่ยถ่วงน้ำหนักจากประวัติการจอดรอเดิม ถ้ายังไม่มีข้อมูลใช้ 1.2 kWh/ชม.
-- ค่าไฟจอดรอโดยประมาณ = kWh จอดรอ × ค่าไฟเฉลี่ยต่อ kWh
-- บาทต่อ kWh ของเครื่องชาร์จ = เงินค่าชาร์จของเครื่องนั้น ÷ kWh ที่ชาร์จจากเครื่องนั้น
-
-## Brand Palette Audit
-
-แอปใช้สี custom ของ TikkieTeddie Lab:
-
-| Token | Hex |
-| --- | --- |
-| marineBlue | `#0D6F8F` |
-| seaMist | `#76B8C8` |
-| seaSoft | `#E3F3F5` |
-| blondeGray | `#B7B4AA` |
-| blondeSoft | `#ECE9E1` |
-| blondeWash | `#F4F2EC` |
-| blondeLine | `#D7D2C8` |
-| marineInk | `#2E3840` |
-| marineMuted | `#667276` |
-
-มี runtime check ใน `src/data/brandAudit.js` เพื่อเทียบ exact HEX collision กับรายการสี CI/logo ที่ค้นคว้าได้จากบริษัทพลังงาน น้ำมัน ขนส่ง และรถยนต์รายใหญ่ในไทย สหรัฐอเมริกา จีน ญี่ปุ่น และยุโรป
-
-ข้อจำกัด: ไม่มีฐานข้อมูลสาธารณะใดที่ยืนยันได้ครบทุกบริษัทในทุกประเทศแบบ 100% จึงเป็นการตรวจแบบ due diligence จากแหล่งเผยแพร่/ฐานข้อมูลสีแบรนด์ที่ค้นคว้าได้ ไม่ใช่การรับประกันทางกฎหมาย
-- Forecast เดือนถัดไป = ค่าเฉลี่ยของเส้นทาง × จำนวนครั้งที่คาดว่าจะวิ่ง
+- Replace mock arrays in `src/lib/operation/mock-data.ts` with database queries.
+- Use `database/schema.sql` for Supabase or PostgreSQL.
+- Connect SMTP, SendGrid, or Resend inside `sendTaskEmail()` in `src/lib/operation/email.ts`.
+- Keep SDK clients lazily initialized inside functions so builds do not require runtime secrets.
