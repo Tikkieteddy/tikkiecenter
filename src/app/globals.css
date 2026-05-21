@@ -11,6 +11,7 @@
   --primary: #1700c7;
   --brand-yellow: #ffe66d;
   --brand-yellow-soft: #fff4a3;
+  --brand-yellow-foreground: #006dff;
   --primary-foreground: var(--brand-yellow);
   --secondary: #edf2ff;
   --secondary-foreground: #10006f;
@@ -56,6 +57,7 @@
   --color-input: var(--input);
   --color-brand-yellow: var(--brand-yellow);
   --color-brand-yellow-soft: var(--brand-yellow-soft);
+  --color-brand-yellow-foreground: var(--brand-yellow-foreground);
   --color-brand-50: var(--brand-50);
   --color-brand-100: var(--brand-100);
   --color-brand-200: var(--brand-200);

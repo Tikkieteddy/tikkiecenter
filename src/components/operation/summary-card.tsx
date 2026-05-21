@@ -14,7 +14,7 @@ type SummaryCardProps = {
 const toneClass = {
   blue: "bg-primary !text-brand-yellow border-brand-500 shadow-sm [&_*]:!text-brand-yellow",
   green: "bg-green-50 text-green-700 border-green-100",
-  yellow: "bg-amber-50 text-amber-700 border-amber-100",
+  yellow: "bg-brand-yellow/80 text-brand-yellow-foreground border-brand-yellow/70 [&_*]:text-brand-yellow-foreground",
   red: "bg-red-50 text-red-700 border-red-100",
   slate: "bg-slate-50 text-slate-700 border-slate-100",
 };
