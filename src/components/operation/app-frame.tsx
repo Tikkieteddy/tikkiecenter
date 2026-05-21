@@ -6,6 +6,7 @@ import { useState } from "react";
 import {
   BarChart3,
   Bell,
+  CalendarDays,
   ClipboardList,
   FilePlus2,
   LayoutDashboard,
@@ -25,6 +26,7 @@ const navItems = [
   { href: "/requests/new", label: { en: "Create Request", th: "สร้างคำขอ" }, icon: FilePlus2 },
   { href: "/my-requests", label: { en: "My Requests", th: "คำขอของฉัน" }, icon: ClipboardList },
   { href: "/requests", label: { en: "All Requests", th: "คำขอทั้งหมด" }, icon: ClipboardList },
+  { href: "/timeline", label: { en: "Timeline", th: "ไทม์ไลน์" }, icon: CalendarDays },
   { href: "/reports", label: { en: "Reports", th: "รายงาน" }, icon: BarChart3 },
   { href: "/notifications", label: { en: "Notifications", th: "บันทึกอีเมล" }, icon: Bell },
   { href: "/users", label: { en: "User Management", th: "จัดการผู้ใช้" }, icon: Users },
