@@ -91,7 +91,7 @@ export function FilterBar({
 
           <Button type="button" size="lg" onClick={onAddProject} className="rounded-full px-5">
             <Plus aria-hidden="true" />
-            เพิ่มโปรเจกต์
+            Add
           </Button>
         </div>
       </div>
