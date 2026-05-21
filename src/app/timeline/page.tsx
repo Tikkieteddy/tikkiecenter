@@ -1,8 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CalendarClock, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CalendarClock } from "lucide-react";
 import { FilterBar } from "@/components/timeline/FilterBar";
 import { PhaseModal } from "@/components/timeline/PhaseModal";
 import { ProjectList } from "@/components/timeline/ProjectList";
@@ -27,7 +26,7 @@ const statusRank = {
 };
 
 export default function TimelinePage() {
-  const { hydrated, projects, addProject, updateProject, deleteProject, updatePhase, resetSeedData } = useTimelineProjects();
+  const { hydrated, projects, addProject, updateProject, deleteProject, updatePhase } = useTimelineProjects();
   const [statusFilter, setStatusFilter] = useState<TimelineStatusFilter>("all");
   const [teamFilter, setTeamFilter] = useState<TimelineTeamFilter>("all");
   const [sortKey, setSortKey] = useState<TimelineSortKey>("startDate");
@@ -83,10 +82,6 @@ export default function TimelinePage() {
             </p>
           </div>
 
-          <Button type="button" variant="secondary" onClick={resetSeedData} className="w-full rounded-full sm:w-auto">
-            <RotateCcw aria-hidden="true" />
-            โหลดข้อมูลตัวอย่าง
-          </Button>
         </header>
 
         <div className="grid gap-5">
