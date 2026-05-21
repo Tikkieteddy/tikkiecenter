@@ -146,7 +146,7 @@ export default function DashboardPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="grid gap-3">
-              <div className="flex items-center justify-between rounded-lg bg-brand-yellow/80 p-3 text-brand-yellow-foreground [&_*]:text-brand-yellow-foreground">
+              <div className="flex items-center justify-between rounded-lg bg-brand-yellow/80 p-3 !text-brand-yellow-foreground [&_*]:!text-brand-yellow-foreground">
                 <span className="text-sm font-semibold">
                   <Trans en="Due this week" th="ครบกำหนดสัปดาห์นี้" />
                 </span>

@@ -38,7 +38,7 @@ export default function TikkieCenterHomePage() {
           </div>
           <a
             href="https://tikkiecenter.vercel.app/login"
-            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-brand-yellow/40 bg-brand-yellow px-4 text-sm font-black text-brand-yellow-foreground shadow-[0_14px_36px_rgba(255,230,109,0.24)] transition hover:-translate-y-0.5 hover:bg-brand-yellow-soft [&_*]:text-brand-yellow-foreground"
+            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-brand-yellow/40 bg-brand-yellow px-4 text-sm font-black !text-brand-yellow-foreground shadow-[0_14px_36px_rgba(255,230,109,0.24)] transition hover:-translate-y-0.5 hover:bg-brand-yellow-soft [&_*]:!text-brand-yellow-foreground"
           >
             เข้าระบบ
             <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -88,7 +88,7 @@ export default function TikkieCenterHomePage() {
                       <div className="grid size-14 place-items-center rounded-lg border border-brand-yellow/28 bg-brand-900/40 text-brand-yellow shadow-sm">
                         <Icon className="size-7" aria-hidden="true" />
                       </div>
-                      <span className="inline-flex items-center gap-1 rounded-full border border-brand-yellow/30 bg-brand-yellow px-3 py-1 text-xs font-black text-brand-yellow-foreground [&_*]:text-brand-yellow-foreground">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-brand-yellow/30 bg-brand-yellow px-3 py-1 text-xs font-black !text-brand-yellow-foreground [&_*]:!text-brand-yellow-foreground">
                         Open
                         <ArrowUpRight className="size-3.5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
                       </span>

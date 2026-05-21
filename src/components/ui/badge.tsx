@@ -10,7 +10,7 @@ const badgeVariants = cva(
         default: "border-transparent bg-primary !text-brand-yellow [&_*]:!text-brand-yellow",
         secondary: "border-border bg-muted text-foreground",
         success: "border-green-200 bg-green-50 text-green-700",
-        warning: "border-brand-yellow/70 bg-brand-yellow/80 text-brand-yellow-foreground [&_*]:text-brand-yellow-foreground",
+        warning: "border-brand-yellow/70 bg-brand-yellow/80 !text-brand-yellow-foreground [&_*]:!text-brand-yellow-foreground",
         danger: "border-red-200 bg-red-50 text-red-700",
         blue: "border-brand-500 bg-primary !text-brand-yellow shadow-sm [&_*]:!text-brand-yellow",
         slate: "border-slate-200 bg-slate-50 text-slate-700",
