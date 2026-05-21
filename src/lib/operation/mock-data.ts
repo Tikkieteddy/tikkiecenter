@@ -12,7 +12,7 @@ export const users: OperationUser[] = [
   {
     id: "usr-admin",
     name: "Tikkie Admin",
-    email: "tikkie.admin@example.com",
+    email: "tkkithman@gmail.com",
     role: "Admin",
     team: "Digital Media & AI",
     createdAt: "2026-01-10T09:00:00+07:00",

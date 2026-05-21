@@ -90,3 +90,10 @@ create index if not exists idx_tasks_requester_email on tasks(requester_email);
 create index if not exists idx_task_comments_task_id on task_comments(task_id);
 create index if not exists idx_status_history_task_id on task_status_history(task_id);
 create index if not exists idx_email_notifications_task_id on email_notifications(task_id);
+
+insert into users (name, email, role, team)
+values ('Tikkie Admin', 'tkkithman@gmail.com', 'Admin', 'Digital Media & AI')
+on conflict (email) do update set
+  name = excluded.name,
+  role = excluded.role,
+  team = excluded.team;
