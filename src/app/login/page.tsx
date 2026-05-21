@@ -17,12 +17,12 @@ export default function LoginPage() {
     <main className="grid min-h-[calc(100vh-3.25rem)] place-items-center bg-[radial-gradient(circle_at_0%_16%,rgba(0,165,255,0.36),transparent_28%),radial-gradient(circle_at_24%_0%,rgba(62,109,255,0.35),transparent_32%),linear-gradient(150deg,#070044_0%,#10006f_38%,#1700c7_66%,#00a5ff_100%)] p-4">
       <div className="grid w-full max-w-5xl gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <section className="grid gap-5">
-          <div className="relative h-36 w-full max-w-sm overflow-hidden rounded-lg border border-white/14 bg-brand-900/28 shadow-[0_24px_80px_rgba(0,165,255,0.2)] sm:h-40">
+          <div className="relative h-36 w-full max-w-sm overflow-hidden rounded-lg border border-white/14 bg-white shadow-[0_24px_80px_rgba(0,165,255,0.2)] sm:h-40">
             <Image
-              src="/tikkie-project-operation-logo.png"
+              src="/tikkie-project-logo.jpg"
               alt="Tikkie Project Operation Center"
               fill
-              className="object-cover"
+              className="object-contain"
               priority
               sizes="(max-width: 640px) 100vw, 384px"
             />

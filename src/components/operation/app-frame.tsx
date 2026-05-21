@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
@@ -75,8 +76,15 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
           href="/dashboard"
           className="flex items-center gap-3 rounded-lg bg-[linear-gradient(135deg,#070044_0%,#1700c7_64%,#00a5ff_100%)] p-3 text-brand-yellow shadow-sm [&_*]:text-brand-yellow"
         >
-          <div className="grid size-10 place-items-center rounded-lg bg-white/15 text-brand-yellow shadow-sm">
-            <ClipboardList className="size-5" aria-hidden="true" />
+          <div className="grid size-10 place-items-center overflow-hidden rounded-lg bg-white shadow-sm">
+            <Image
+              src="/tikkie-project-logo.jpg"
+              alt="Tikkie Project Operation Center"
+              width={40}
+              height={40}
+              className="h-full w-full object-contain"
+              priority
+            />
           </div>
           <div className="min-w-0">
             <p className="text-sm font-bold">Tikkie Project</p>
@@ -153,8 +161,15 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-20 border-b border-border bg-white/92 backdrop-blur lg:hidden">
         <div className="flex min-h-16 items-center justify-between gap-3 px-4">
           <Link href="/dashboard" className="flex min-w-0 items-center gap-3">
-            <div className="grid size-9 place-items-center rounded-lg bg-[linear-gradient(135deg,#070044,#1700c7_70%,#00a5ff)] text-brand-yellow [&_*]:text-brand-yellow">
-              <ClipboardList className="size-5" aria-hidden="true" />
+            <div className="grid size-9 place-items-center overflow-hidden rounded-lg bg-white shadow-sm">
+              <Image
+                src="/tikkie-project-logo.jpg"
+                alt="Tikkie Project Operation Center"
+                width={36}
+                height={36}
+                className="h-full w-full object-contain"
+                priority
+              />
             </div>
             <div className="min-w-0">
               <p className="truncate text-sm font-bold">Tikkie Project</p>

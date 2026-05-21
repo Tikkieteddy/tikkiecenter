@@ -28,8 +28,15 @@ export default function TikkieCenterHomePage() {
       <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-5 sm:px-6 lg:px-8">
         <header className="flex items-center justify-between gap-4">
           <div className="flex min-w-0 items-center gap-3">
-            <div className="grid size-12 shrink-0 place-items-center overflow-hidden rounded-lg border border-white/20 bg-white/12 shadow-[0_16px_48px_rgba(0,0,0,0.22)]">
-              <Image src="/TNN_A.jpg" alt="TikkieTeddie Lab" width={48} height={48} className="h-full w-full object-cover" priority />
+            <div className="grid size-12 shrink-0 place-items-center overflow-hidden rounded-lg border border-white/20 bg-white shadow-[0_16px_48px_rgba(0,0,0,0.22)]">
+              <Image
+                src="/tikkie-project-logo.jpg"
+                alt="Tikkie Project Operation Center"
+                width={48}
+                height={48}
+                className="h-full w-full object-contain"
+                priority
+              />
             </div>
             <div className="min-w-0">
               <p className="truncate text-lg font-black leading-tight sm:text-xl">Tikkie Center</p>
