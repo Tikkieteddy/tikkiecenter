@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, BatteryCharging, ClipboardList, Layers3, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowUpRight, BatteryCharging, ClipboardList, Sparkles } from "lucide-react";
 
 const projects = [
   {
@@ -64,18 +64,6 @@ export default function TikkieCenterHomePage() {
             <p className="mt-4 max-w-xl text-base leading-7 text-brand-yellow-soft sm:text-lg">
               หน้าเดียวสำหรับเข้าใช้งานทุกโปรเจคสำคัญ เลือกการ์ดที่ต้องการ แล้วไปต่อได้ทันทีแบบเร็ว สะอาด และเป็นระเบียบ
             </p>
-            <div className="mt-6 grid max-w-xl gap-3 sm:grid-cols-2">
-              <div className="rounded-lg border border-white/16 bg-white/10 p-4 backdrop-blur">
-                <Layers3 className="size-5 text-brand-yellow" aria-hidden="true" />
-                <p className="mt-3 text-sm font-bold">All projects</p>
-                <p className="mt-1 text-xs leading-5 text-brand-yellow-soft">รวมลิงก์โปรเจคที่ใช้งานประจำไว้ในหน้าเดียว</p>
-              </div>
-              <div className="rounded-lg border border-white/16 bg-white/10 p-4 backdrop-blur">
-                <ShieldCheck className="size-5 text-brand-yellow" aria-hidden="true" />
-                <p className="mt-3 text-sm font-bold">Clean access</p>
-                <p className="mt-1 text-xs leading-5 text-brand-yellow-soft">แยกหน้า hub ออกจากระบบติดตามคำขอภายใน</p>
-              </div>
-            </div>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
