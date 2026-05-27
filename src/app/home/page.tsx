@@ -1,7 +1,16 @@
 import Image from "next/image";
-import { ArrowUpRight, BatteryCharging, ClipboardList, Sparkles } from "lucide-react";
+import { ArrowUpRight, BatteryCharging, Calculator, ClipboardList, Sparkles } from "lucide-react";
 
 const projects = [
+  {
+    title: "คำนวณไทยช่วยไทย 60/40",
+    eyebrow: "Thai Help Calculator",
+    href: "https://thai-help-calculator.vercel.app",
+    description: "กรอกราคาสินค้า แล้วดูทันทีว่ารัฐช่วยเท่าไหร่ เราจ่ายเท่าไหร่ และสิทธิคงเหลือวันนี้เท่าไหร่",
+    icon: Calculator,
+    metric: "60% / สูงสุด 200 บาท",
+    accent: "from-red-500 via-brand-yellow to-green-500",
+  },
   {
     title: "EV Charge Daily Calculator",
     eyebrow: "EV Power",
