@@ -4,6 +4,11 @@ Tikkie Project Operation Center is an internal request and task tracking web app
 
 © 2026 TikkieTeddie Lab | V.1.0.0
 
+## Applications
+
+- Tikkie Center: แอปหลักที่ repository root
+- Tikkie Trip: แอปวางแผนท่องเที่ยวด้วยรถ EV ใน `trip/`
+
 ## Scope
 
 - Phase 1 uses email notification only.

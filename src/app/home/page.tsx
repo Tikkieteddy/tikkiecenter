@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, BatteryCharging, Calculator, ClipboardList, Sparkles } from "lucide-react";
+import { ArrowUpRight, BatteryCharging, Calculator, ClipboardList, MapPinned, Sparkles } from "lucide-react";
 
 const projects = [
   {
@@ -28,6 +28,15 @@ const projects = [
     icon: ClipboardList,
     metric: "Requests / Email / Reports",
     accent: "from-brand-yellow to-brand-yellow-soft",
+  },
+  {
+    title: "EV Trip Planner",
+    eyebrow: "Tikkie Travel",
+    href: "https://tikkiecenter-trip.vercel.app",
+    description: "วางแผนเที่ยวด้วยรถ EV คำนวณเส้นทาง แบตเตอรี่ จุดชาร์จ และสถานที่แวะระหว่างทาง",
+    icon: MapPinned,
+    metric: "Route / Charging / Travel",
+    accent: "from-brand-cyan via-brand-400 to-brand-yellow",
   },
 ];
 
@@ -83,7 +92,7 @@ export default function TikkieCenterHomePage() {
                 <a
                   key={project.title}
                   href={project.href}
-                  className="group relative min-h-[24rem] overflow-hidden rounded-lg border border-white/18 bg-white/12 p-5 shadow-[0_28px_80px_rgba(0,0,0,0.24)] backdrop-blur transition hover:-translate-y-1 hover:bg-white/16"
+                  className="group relative min-h-[20rem] overflow-hidden rounded-lg border border-white/18 bg-white/12 p-5 shadow-[0_28px_80px_rgba(0,0,0,0.24)] backdrop-blur transition hover:-translate-y-1 hover:bg-white/16"
                 >
                   <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${project.accent}`} />
                   <div className="absolute -right-16 -top-16 size-44 rounded-full border border-white/20 bg-white/10" aria-hidden="true" />
@@ -98,13 +107,13 @@ export default function TikkieCenterHomePage() {
                       </span>
                     </div>
 
-                    <div className="mt-8">
+                    <div className="mt-6">
                       <p className="text-xs font-black uppercase text-brand-yellow-soft">{project.eyebrow}</p>
                       <h2 className="mt-2 text-2xl font-black leading-tight text-brand-yellow">{project.title}</h2>
                       <p className="mt-4 text-sm leading-7 text-brand-yellow-soft">{project.description}</p>
                     </div>
 
-                    <div className="mt-auto pt-8">
+                    <div className="mt-auto pt-6">
                       <div className="rounded-lg border border-white/14 bg-brand-900/34 p-3">
                         <p className="text-xs font-semibold text-brand-yellow-soft">Project scope</p>
                         <p className="mt-1 text-sm font-black text-brand-yellow">{project.metric}</p>
