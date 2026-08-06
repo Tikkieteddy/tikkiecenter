@@ -7,6 +7,7 @@ export default [
       ".next/**",
       "dist/**",
       "node_modules/**",
+      "trip/**",
       "next-env.d.ts",
       "src/app/**",
       "src/lib/**",
