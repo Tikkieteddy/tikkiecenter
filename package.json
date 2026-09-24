@@ -1,16 +1,21 @@
 {
   "name": "tikkiecenter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "tikkieteddielab",
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "node scripts/generate-build-info.mjs",
     "dev": "next dev --hostname 127.0.0.1",
+    "prebuild": "node scripts/generate-build-info.mjs",
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",
     "preview": "next start --hostname 127.0.0.1",
     "lint": "eslint .",
-    "test": "npm run build"
+    "test": "npm run build",
+    "version:major": "npm version major --no-git-tag-version",
+    "version:minor": "npm version minor --no-git-tag-version",
+    "version:patch": "npm version patch --no-git-tag-version"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

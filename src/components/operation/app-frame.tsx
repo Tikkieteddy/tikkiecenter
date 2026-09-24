@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { LanguageProvider, LanguageToggle, Trans } from "@/components/operation/language-provider";
+import { VersionFooter } from "@/components/version-footer";
 
 const navItems = [
   { href: "/dashboard", label: { en: "Dashboard", th: "แดชบอร์ด" }, icon: LayoutDashboard },
@@ -64,7 +65,7 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
     return (
       <div className="min-h-screen bg-brand-900">
         {children}
-        <AppFooter variant="dark" />
+        <VersionFooter variant="dark" />
       </div>
     );
   }
@@ -244,22 +245,8 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
 
       <main className="min-h-screen pb-10 lg:pl-[17rem]">
         <div className="mx-auto w-full max-w-[1500px] px-4 py-5 sm:px-5 lg:px-6">{children}</div>
-        <AppFooter />
+        <VersionFooter />
       </main>
     </div>
-  );
-}
-
-function AppFooter({ variant = "light" }: { variant?: "light" | "dark" }) {
-  return (
-    <footer
-      className={
-        variant === "dark"
-          ? "px-4 py-5 text-center text-xs font-semibold text-brand-yellow-soft"
-          : "px-4 py-5 text-center text-xs font-semibold text-muted-foreground"
-      }
-    >
-      © 2026 TikkieTeddie Lab | V.1.0.0
-    </footer>
   );
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight, BatteryCharging, Calculator, ClipboardList, Sparkles } from "lucide-react";
+import { VersionFooter } from "@/components/version-footer";
 
 const projects = [
   {
@@ -117,9 +118,7 @@ export default function TikkieCenterHomePage() {
           </div>
         </section>
 
-        <footer className="py-5 text-center text-xs font-semibold text-brand-yellow-soft">
-          © 2026 TikkieTeddie Lab | V.1.0.0
-        </footer>
+        <VersionFooter variant="dark" className="py-5" />
       </div>
     </main>
   );
