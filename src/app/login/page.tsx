@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import { useState } from "react";
@@ -8,6 +7,7 @@ import { ArrowRight, CheckCircle2, Mail, ShieldCheck } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { BrandWordmark } from "@/components/brand/brand-wordmark";
 import { LanguageToggle, Trans } from "@/components/operation/language-provider";
 
 const loginHighlights = [
@@ -58,18 +58,15 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="grid min-h-[calc(100vh-3.25rem)] place-items-center bg-[radial-gradient(circle_at_0%_16%,rgba(0,165,255,0.36),transparent_28%),radial-gradient(circle_at_24%_0%,rgba(62,109,255,0.35),transparent_32%),linear-gradient(150deg,#070044_0%,#10006f_38%,#1700c7_66%,#00a5ff_100%)] p-4">
-      <div className="grid w-full max-w-5xl gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+    <main className="brand-orbit-surface grid min-h-[calc(100vh-3.25rem)] place-items-center overflow-hidden p-4">
+      <div className="relative z-10 grid w-full max-w-5xl gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <section className="grid gap-5">
-          <div className="relative h-36 w-full max-w-sm overflow-hidden rounded-lg border border-white/14 bg-white shadow-[0_24px_80px_rgba(0,165,255,0.2)] sm:h-40">
-            <Image
-              src="/tikkie-project-logo.jpg"
-              alt="Tikkie Project Operation Center"
-              fill
-              className="object-contain"
-              priority
-              sizes="(max-width: 640px) 100vw, 384px"
-            />
+          <div className="relative flex h-36 w-full max-w-sm items-center overflow-hidden rounded-lg border border-white/10 bg-[#0B0F1A]/78 px-6 shadow-[0_24px_80px_rgba(59,130,246,0.2)] sm:h-40">
+            <div className="relative z-10">
+              <BrandWordmark size="hero" />
+              <p className="mt-3 text-xs font-semibold text-[#CBD5E1]">AI · WEB · DATA · EXPERIMENTS</p>
+            </div>
+            <div className="absolute -bottom-28 -right-12 size-56 rounded-full border border-[#22D3EE]/45 shadow-[0_0_28px_rgba(59,130,246,0.34)]" aria-hidden="true" />
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <Badge variant="blue" className="w-fit border-white/20 bg-white/10 !text-brand-yellow [&_*]:!text-brand-yellow">
@@ -78,10 +75,10 @@ export default function LoginPage() {
             <LanguageToggle />
           </div>
           <div className="grid gap-3">
-            <h1 className="text-4xl font-bold leading-tight text-brand-yellow sm:text-5xl">
+            <h1 className="text-4xl font-bold leading-tight text-[#F8FAFC] sm:text-5xl">
               Tikkie Project Operation Center
             </h1>
-            <p className="max-w-2xl text-base leading-7 text-brand-yellow-soft">
+            <p className="max-w-2xl text-base leading-7 text-[#CBD5E1]">
               <Trans
                 en="Internal request tracking for submitted work, status updates, email logs, and compact reports."
                 th="ระบบติดตามคำขอภายใน สำหรับส่งงาน ติดตามสถานะ ดูบันทึกอีเมล และรายงานแบบกระชับ"
@@ -92,10 +89,10 @@ export default function LoginPage() {
             {loginHighlights.map(({ label, icon: Icon }) => (
               <div
                 key={label.en}
-                className="flex items-center gap-2 rounded-lg border border-white/20 bg-white/12 p-3 shadow-sm backdrop-blur"
+                className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.06] p-3 shadow-sm backdrop-blur"
               >
-                <Icon className="size-5 text-brand-cyan" aria-hidden="true" />
-                <span className="text-sm font-semibold text-brand-yellow">
+                <Icon className="size-5 text-[#22D3EE]" aria-hidden="true" />
+                <span className="text-sm font-semibold text-[#F8FAFC]">
                   <Trans en={label.en} th={label.th} />
                 </span>
               </div>

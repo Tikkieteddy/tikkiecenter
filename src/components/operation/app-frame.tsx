@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
@@ -21,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { LanguageProvider, LanguageToggle, Trans } from "@/components/operation/language-provider";
+import { BrandWordmark } from "@/components/brand/brand-wordmark";
 import { VersionFooter } from "@/components/version-footer";
 
 const navItems = [
@@ -75,24 +75,9 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-[17rem] border-r border-border bg-white/92 px-4 py-4 shadow-sm backdrop-blur lg:block">
         <Link
           href="/dashboard"
-          className="flex items-center gap-3 rounded-lg bg-[linear-gradient(135deg,#070044_0%,#1700c7_64%,#00a5ff_100%)] p-3 text-brand-yellow shadow-sm [&_*]:text-brand-yellow"
+          className="flex min-h-[68px] items-center rounded-lg border border-white/10 bg-[#0B0F1A] px-4 shadow-[0_14px_36px_rgba(11,15,26,0.18)]"
         >
-          <div className="grid size-10 place-items-center overflow-hidden rounded-lg bg-white shadow-sm">
-            <Image
-              src="/tikkie-project-logo.jpg"
-              alt="Tikkie Project Operation Center"
-              width={40}
-              height={40}
-              className="h-full w-full object-contain"
-              priority
-            />
-          </div>
-          <div className="min-w-0">
-            <p className="text-sm font-bold">Tikkie Project</p>
-            <p className="truncate text-xs font-semibold text-brand-yellow-soft">
-              <Trans en="Operation Center" th="ศูนย์ปฏิบัติการ" />
-            </p>
-          </div>
+          <BrandWordmark size="lg" />
         </Link>
 
         <div className="mt-4 rounded-lg border border-brand-100 bg-white p-3">
@@ -159,25 +144,10 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      <header className="sticky top-0 z-20 border-b border-border bg-white/92 backdrop-blur lg:hidden">
+      <header className="sticky top-0 z-20 border-b border-white/10 bg-[#0B0F1A]/95 text-[#F8FAFC] backdrop-blur-[14px] lg:hidden">
         <div className="flex min-h-16 items-center justify-between gap-3 px-4">
-          <Link href="/dashboard" className="flex min-w-0 items-center gap-3">
-            <div className="grid size-9 place-items-center overflow-hidden rounded-lg bg-white shadow-sm">
-              <Image
-                src="/tikkie-project-logo.jpg"
-                alt="Tikkie Project Operation Center"
-                width={36}
-                height={36}
-                className="h-full w-full object-contain"
-                priority
-              />
-            </div>
-            <div className="min-w-0">
-              <p className="truncate text-sm font-bold">Tikkie Project</p>
-              <p className="truncate text-xs text-brand-700">
-                <Trans en="Operation Center" th="ศูนย์ปฏิบัติการ" />
-              </p>
-            </div>
+          <Link href="/dashboard" className="flex min-w-0 items-center">
+            <BrandWordmark size="sm" />
           </Link>
           <div className="ml-auto">
             <LanguageToggle compact />
@@ -187,6 +157,7 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
             size="icon"
             type="button"
             variant="outline"
+            className="border-white/15 bg-white/5 text-[#F8FAFC] hover:bg-white/10 hover:text-white"
             onClick={() => setMobileMenuOpen(true)}
           >
             <Menu aria-hidden="true" />
@@ -195,18 +166,18 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
       </header>
 
       {mobileMenuOpen ? (
-        <div className="fixed inset-0 z-50 bg-slate-950/45 p-3 lg:hidden">
-          <div className="ml-auto grid max-h-[calc(100vh-1.5rem)] w-full max-w-sm gap-4 overflow-auto rounded-lg bg-white p-4 shadow-xl">
+        <div className="fixed inset-0 z-50 bg-slate-950/75 p-3 lg:hidden">
+          <div className="ml-auto grid max-h-[calc(100vh-1.5rem)] w-full max-w-sm gap-4 overflow-auto rounded-lg border border-white/10 bg-[#0B0F1A] p-4 text-[#F8FAFC] shadow-2xl">
             <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="font-bold text-foreground">
-                  <Trans en="Menu" th="เมนู" />
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  <Trans en="Navigate operation center" th="นำทางในศูนย์ปฏิบัติการ" />
-                </p>
-              </div>
-              <Button aria-label="Close menu" size="icon" type="button" variant="ghost" onClick={() => setMobileMenuOpen(false)}>
+              <BrandWordmark size="md" />
+              <Button
+                aria-label="Close menu"
+                size="icon"
+                type="button"
+                variant="ghost"
+                className="text-[#F8FAFC] hover:bg-white/10 hover:text-white"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 <X aria-hidden="true" />
               </Button>
             </div>
@@ -221,8 +192,8 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700",
-                      active && "bg-primary !text-brand-yellow hover:bg-primary hover:!text-brand-yellow [&_*]:!text-brand-yellow",
+                      "flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm font-semibold text-[#CBD5E1] transition hover:bg-white/[0.06] hover:text-white",
+                      active && "bg-[#3B82F6]/20 !text-white ring-1 ring-[#3B82F6]/45 hover:bg-[#3B82F6]/25 hover:!text-white [&_*]:!text-white",
                     )}
                   >
                     <Icon className="size-4" aria-hidden="true" />
@@ -234,7 +205,7 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex min-h-11 items-center gap-3 rounded-lg border border-border px-3 text-sm font-semibold text-slate-600"
+              className="flex min-h-11 items-center gap-3 rounded-lg border border-white/10 px-3 text-sm font-semibold text-[#CBD5E1] hover:bg-white/[0.06] hover:text-white"
             >
               <LogOut className="size-4" aria-hidden="true" />
               <Trans en="Switch role" th="เปลี่ยนบทบาท" />

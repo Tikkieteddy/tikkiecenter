@@ -2,23 +2,31 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Tikkie Project Operation Center",
-    short_name: "Tikkie Ops",
+    name: "ttdLab",
+    short_name: "ttdLab",
     description: "Internal project request and task tracking center for Tikkie.",
     start_url: "/login",
     display: "standalone",
-    background_color: "#F4F7FF",
-    theme_color: "#1700C7",
+    background_color: "#0B0F1A",
+    theme_color: "#0B0F1A",
     icons: [
       {
-        src: "/tikkie-project-logo.jpg",
+        src: "/android-chrome-192x192.png",
         sizes: "192x192",
-        type: "image/jpeg",
+        type: "image/png",
+        purpose: "any",
       },
       {
-        src: "/tikkie-project-logo.jpg",
+        src: "/android-chrome-512x512.png",
         sizes: "512x512",
-        type: "image/jpeg",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/android-chrome-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
       },
     ],
   };

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ArrowUpRight, BatteryCharging, Calculator, ClipboardList, ListChecks, Sparkles } from "lucide-react";
+import { BrandWordmark } from "@/components/brand/brand-wordmark";
 import { VersionFooter } from "@/components/version-footer";
 
 const projects = [
@@ -10,7 +10,7 @@ const projects = [
     description: "กรอกราคาสินค้า แล้วดูทันทีว่ารัฐช่วยเท่าไหร่ เราจ่ายเท่าไหร่ และสิทธิคงเหลือวันนี้เท่าไหร่",
     icon: Calculator,
     metric: "60% / สูงสุด 200 บาท",
-    accent: "from-red-500 via-brand-yellow to-green-500",
+    accent: "from-[#22D3EE] via-[#3B82F6] to-[#8B5CF6]",
   },
   {
     title: "EV Charge Daily Calculator",
@@ -19,7 +19,7 @@ const projects = [
     description: "คำนวณค่าชาร์จไฟรถ EV รายวัน รายสัปดาห์ รายเดือน และประมาณการล่วงหน้า",
     icon: BatteryCharging,
     metric: "Daily / Weekly / Monthly",
-    accent: "from-brand-cyan to-brand-400",
+    accent: "from-[#3B82F6] to-[#22D3EE]",
   },
   {
     title: "ระบบติดตามคำขอภายใน",
@@ -28,7 +28,7 @@ const projects = [
     description: "ระบบติดตามคำขอภายใน สำหรับส่งงาน ติดตามสถานะ ดูบันทึกอีเมล และรายงานแบบกระชับ เพื่อเตือนความจำสำหรับผู้ใช้งาน",
     icon: ClipboardList,
     metric: "Requests / Email / Reports",
-    accent: "from-brand-yellow to-brand-yellow-soft",
+    accent: "from-[#8B5CF6] via-[#3B82F6] to-[#22D3EE]",
   },
   {
     title: "Requirement & Acceptance Management System",
@@ -37,34 +37,19 @@ const projects = [
     description: "จัดการ Technical Workflow ตั้งแต่บรีฟ มอบหมาย ติดตาม UAT และตรวจรับงาน พร้อมหน้าเดโมสำหรับทดสอบการใช้งาน",
     icon: ListChecks,
     metric: "Brief / Workflow / UAT",
-    accent: "from-fuchsia-500 via-brand-cyan to-emerald-400",
+    accent: "from-[#22D3EE] via-[#3B82F6] to-[#8B5CF6]",
   },
 ];
 
 export default function TikkieCenterHomePage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[radial-gradient(circle_at_14%_0%,rgba(0,165,255,0.32),transparent_30%),radial-gradient(circle_at_92%_8%,rgba(255,230,109,0.2),transparent_24%),linear-gradient(145deg,#070044_0%,#12007c_44%,#1700c7_72%,#00a5ff_100%)] text-brand-yellow">
-      <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-5 sm:px-6 lg:px-8">
-        <header className="flex items-center justify-between gap-4">
-          <div className="flex min-w-0 items-center gap-3">
-            <div className="grid size-12 shrink-0 place-items-center overflow-hidden rounded-lg border border-white/20 bg-white shadow-[0_16px_48px_rgba(0,0,0,0.22)]">
-              <Image
-                src="/tikkie-project-logo.jpg"
-                alt="Tikkie Project Operation Center"
-                width={48}
-                height={48}
-                className="h-full w-full object-contain"
-                priority
-              />
-            </div>
-            <div className="min-w-0">
-              <p className="truncate text-lg font-black leading-tight sm:text-xl">Tikkie Center</p>
-              <p className="truncate text-xs font-semibold text-brand-yellow-soft">Project hub by TikkieTeddie Lab</p>
-            </div>
-          </div>
+    <main className="brand-orbit-surface min-h-screen overflow-hidden text-[#F8FAFC]">
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 sm:px-6 lg:px-8">
+        <header className="flex min-h-[68px] items-center justify-between gap-4 border-b border-white/[0.08]">
+          <BrandWordmark size="lg" />
           <a
             href="https://tikkiecenter.vercel.app/login"
-            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-brand-yellow/40 bg-brand-yellow px-4 text-sm font-black !text-brand-yellow-foreground shadow-[0_14px_36px_rgba(255,230,109,0.24)] transition hover:-translate-y-0.5 hover:bg-brand-yellow-soft [&_*]:!text-brand-yellow-foreground"
+            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-white/10 bg-[linear-gradient(90deg,#3B82F6,#8B5CF6)] px-4 text-sm font-bold text-[#F8FAFC] shadow-[0_12px_30px_rgba(59,130,246,0.24)] transition hover:-translate-y-0.5 hover:brightness-110"
           >
             เข้าระบบ
             <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -73,14 +58,14 @@ export default function TikkieCenterHomePage() {
 
         <section className="grid flex-1 content-center gap-6 py-7 lg:grid-cols-[minmax(14rem,0.58fr)_minmax(0,1.9fr)] lg:items-center xl:gap-8">
           <div className="max-w-sm lg:self-start lg:pt-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-yellow/30 bg-white/10 px-2.5 py-1.5 text-[11px] font-bold text-brand-yellow-soft shadow-sm backdrop-blur">
-              <Sparkles className="size-3.5 text-brand-yellow" aria-hidden="true" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#3B82F6]/35 bg-[#3B82F6]/10 px-2.5 py-1.5 text-[11px] font-bold text-[#C7D2FE] shadow-sm backdrop-blur">
+              <Sparkles className="size-3.5 text-[#22D3EE]" aria-hidden="true" />
               ศูนย์รวมโปรเจคของติ๊ก
             </div>
-            <h1 className="mt-3 text-3xl font-black leading-tight text-brand-yellow sm:text-4xl">
+            <h1 className="mt-3 text-3xl font-black leading-tight text-[#F8FAFC] sm:text-4xl">
               Tikkie Center
             </h1>
-            <p className="mt-2 max-w-xs text-sm leading-6 text-brand-yellow-soft">
+            <p className="mt-2 max-w-xs text-sm leading-6 text-[#94A3B8]">
               หน้าเดียวสำหรับเข้าใช้งานทุกโปรเจคสำคัญ เลือกการ์ดที่ต้องการ แล้วไปต่อได้ทันทีแบบเร็ว สะอาด และเป็นระเบียบ
             </p>
           </div>
@@ -93,31 +78,31 @@ export default function TikkieCenterHomePage() {
                 <a
                   key={project.title}
                   href={project.href}
-                  className="group relative min-h-[17rem] overflow-hidden rounded-lg border border-white/18 bg-white/12 p-4 shadow-[0_20px_52px_rgba(0,0,0,0.2)] backdrop-blur transition hover:-translate-y-1 hover:bg-white/16"
+                  className="group relative min-h-[17rem] overflow-hidden rounded-lg border border-white/10 bg-[#111827]/80 p-4 shadow-[0_20px_52px_rgba(0,0,0,0.24)] backdrop-blur transition hover:-translate-y-1 hover:border-[#3B82F6]/45 hover:bg-[#172036]/90"
                 >
                   <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${project.accent}`} />
                   <div className="absolute -right-14 -top-14 size-36 rounded-full border border-white/20 bg-white/10" aria-hidden="true" />
                   <div className="relative flex h-full flex-col">
                     <div className="flex items-start justify-between gap-3">
-                      <div className="grid size-11 place-items-center rounded-lg border border-brand-yellow/28 bg-brand-900/40 text-brand-yellow shadow-sm">
+                      <div className="grid size-11 place-items-center rounded-lg border border-[#3B82F6]/35 bg-[#0B0F1A]/70 text-[#22D3EE] shadow-sm">
                         <Icon className="size-5" aria-hidden="true" />
                       </div>
-                      <span className="inline-flex items-center gap-1 rounded-full border border-brand-yellow/30 bg-brand-yellow px-2.5 py-1 text-[11px] font-black !text-brand-yellow-foreground [&_*]:!text-brand-yellow-foreground">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-[#3B82F6] px-2.5 py-1 text-[11px] font-black text-[#F8FAFC]">
                         Open
                         <ArrowUpRight className="size-3 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
                       </span>
                     </div>
 
                     <div className="mt-5">
-                      <p className="text-[11px] font-black uppercase text-brand-yellow-soft">{project.eyebrow}</p>
-                      <h2 className="mt-1.5 text-xl font-black leading-tight text-brand-yellow">{project.title}</h2>
-                      <p className="mt-2.5 line-clamp-3 text-xs leading-5 text-brand-yellow-soft">{project.description}</p>
+                      <p className="text-[11px] font-black uppercase text-[#60A5FA]">{project.eyebrow}</p>
+                      <h2 className="mt-1.5 text-xl font-black leading-tight text-[#F8FAFC]">{project.title}</h2>
+                      <p className="mt-2.5 line-clamp-3 text-xs leading-5 text-[#CBD5E1]">{project.description}</p>
                     </div>
 
                     <div className="mt-auto pt-4">
-                      <div className="rounded-lg border border-white/14 bg-brand-900/34 px-3 py-2.5">
-                        <p className="text-[10px] font-semibold text-brand-yellow-soft">Project scope</p>
-                        <p className="mt-0.5 text-xs font-black text-brand-yellow">{project.metric}</p>
+                      <div className="rounded-lg border border-white/[0.08] bg-[#0B0F1A]/65 px-3 py-2.5">
+                        <p className="text-[10px] font-semibold text-[#94A3B8]">Project scope</p>
+                        <p className="mt-0.5 text-xs font-black text-[#E2E8F0]">{project.metric}</p>
                       </div>
                     </div>
                   </div>
@@ -127,7 +112,7 @@ export default function TikkieCenterHomePage() {
           </div>
         </section>
 
-        <VersionFooter variant="dark" className="py-5" />
+        <VersionFooter variant="dark" className="py-5 text-[#94A3B8]" />
       </div>
     </main>
   );
