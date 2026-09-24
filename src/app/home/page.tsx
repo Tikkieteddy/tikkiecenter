@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, BatteryCharging, Calculator, ClipboardList, Sparkles } from "lucide-react";
+import { ArrowUpRight, BatteryCharging, Calculator, ClipboardList, ListChecks, Sparkles } from "lucide-react";
 import { VersionFooter } from "@/components/version-footer";
 
 const projects = [
@@ -29,6 +29,15 @@ const projects = [
     icon: ClipboardList,
     metric: "Requests / Email / Reports",
     accent: "from-brand-yellow to-brand-yellow-soft",
+  },
+  {
+    title: "Requirement & Acceptance Management System",
+    eyebrow: "Model Web Mock",
+    href: "https://model-web-mock.vercel.app/",
+    description: "จัดการ Technical Workflow ตั้งแต่บรีฟ มอบหมาย ติดตาม UAT และตรวจรับงาน พร้อมหน้าเดโมสำหรับทดสอบการใช้งาน",
+    icon: ListChecks,
+    metric: "Brief / Workflow / UAT",
+    accent: "from-fuchsia-500 via-brand-cyan to-emerald-400",
   },
 ];
 
