@@ -54,7 +54,7 @@ export default function LoginPage() {
         loginAt: new Date().toISOString(),
       }),
     );
-    router.push("/dashboard");
+    router.push("/request");
   }
 
   return (

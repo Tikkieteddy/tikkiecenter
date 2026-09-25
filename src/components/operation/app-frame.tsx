@@ -24,7 +24,7 @@ import { BrandWordmark } from "@/components/brand/brand-wordmark";
 import { VersionFooter } from "@/components/version-footer";
 
 const navItems = [
-  { href: "/dashboard", label: { en: "Dashboard", th: "แดชบอร์ด" }, icon: LayoutDashboard },
+  { href: "/request", label: { en: "Dashboard", th: "แดชบอร์ด" }, icon: LayoutDashboard },
   { href: "/requests/new", label: { en: "Create Request", th: "สร้างคำขอ" }, icon: FilePlus2 },
   { href: "/my-requests", label: { en: "My Requests", th: "คำขอของฉัน" }, icon: ClipboardList },
   { href: "/requests", label: { en: "All Requests", th: "คำขอทั้งหมด" }, icon: ClipboardList },
@@ -74,7 +74,7 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-[17rem] border-r border-border bg-white/92 px-4 py-4 shadow-sm backdrop-blur lg:block">
         <Link
-          href="/dashboard"
+          href="/request"
           className="flex min-h-[68px] items-center rounded-lg border border-white/10 bg-[#0B0F1A] px-4 shadow-[0_14px_36px_rgba(11,15,26,0.18)]"
         >
           <BrandWordmark size="lg" />
@@ -146,7 +146,7 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
 
       <header className="sticky top-0 z-20 border-b border-white/10 bg-[#0B0F1A]/95 text-[#F8FAFC] backdrop-blur-[14px] lg:hidden">
         <div className="flex min-h-16 items-center justify-between gap-3 px-4">
-          <Link href="/dashboard" className="flex min-w-0 items-center">
+          <Link href="/request" className="flex min-w-0 items-center">
             <BrandWordmark size="sm" />
           </Link>
           <div className="ml-auto">
