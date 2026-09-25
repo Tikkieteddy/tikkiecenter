@@ -34,7 +34,7 @@ export default async function StatusUpdatePage({ params }: StatusUpdatePageProps
           </>
         }
         actions={
-          <Link href={`/requests/${task.ticketId}`} className={buttonVariants({ variant: "outline" })}>
+          <Link href={`/requestment/requests/${task.ticketId}`} className={buttonVariants({ variant: "outline" })}>
             <ArrowLeft aria-hidden="true" />
             <Trans en="Back to detail" th="กลับไปหน้ารายละเอียด" />
           </Link>

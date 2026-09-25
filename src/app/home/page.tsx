@@ -24,7 +24,7 @@ const projects = [
   {
     title: "ระบบติดตามคำขอภายใน",
     eyebrow: "Tikkie Center",
-    href: "https://tikkiecenter.vercel.app/login",
+    href: "/requestment/login",
     description: "ระบบติดตามคำขอภายใน สำหรับส่งงาน ติดตามสถานะ ดูบันทึกอีเมล และรายงานแบบกระชับ เพื่อเตือนความจำสำหรับผู้ใช้งาน",
     icon: ClipboardList,
     metric: "Requests / Email / Reports",
@@ -48,7 +48,7 @@ export default function TikkieCenterHomePage() {
         <header className="flex min-h-[68px] items-center justify-between gap-4 border-b border-white/[0.08]">
           <BrandWordmark size="lg" />
           <a
-            href="https://tikkiecenter.vercel.app/login"
+            href="/requestment/login"
             className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-white/10 bg-[linear-gradient(90deg,#3B82F6,#8B5CF6)] px-4 text-sm font-bold text-[#F8FAFC] shadow-[0_12px_30px_rgba(59,130,246,0.24)] transition hover:-translate-y-0.5 hover:brightness-110"
           >
             เข้าระบบ

@@ -24,20 +24,20 @@ import { BrandWordmark } from "@/components/brand/brand-wordmark";
 import { VersionFooter } from "@/components/version-footer";
 
 const navItems = [
-  { href: "/request", label: { en: "Dashboard", th: "แดชบอร์ด" }, icon: LayoutDashboard },
-  { href: "/requests/new", label: { en: "Create Request", th: "สร้างคำขอ" }, icon: FilePlus2 },
-  { href: "/my-requests", label: { en: "My Requests", th: "คำขอของฉัน" }, icon: ClipboardList },
-  { href: "/requests", label: { en: "All Requests", th: "คำขอทั้งหมด" }, icon: ClipboardList },
-  { href: "/timeline", label: { en: "Timeline", th: "ไทม์ไลน์" }, icon: CalendarDays },
-  { href: "/reports", label: { en: "Reports", th: "รายงาน" }, icon: BarChart3 },
-  { href: "/notifications", label: { en: "Notifications", th: "บันทึกอีเมล" }, icon: Bell },
-  { href: "/users", label: { en: "User Management", th: "จัดการผู้ใช้" }, icon: Users },
-  { href: "/settings", label: { en: "Settings", th: "ตั้งค่า" }, icon: Settings },
+  { href: "/requestment/dashboard", label: { en: "Dashboard", th: "แดชบอร์ด" }, icon: LayoutDashboard },
+  { href: "/requestment/requests/new", label: { en: "Create Request", th: "สร้างคำขอ" }, icon: FilePlus2 },
+  { href: "/requestment/my-requests", label: { en: "My Requests", th: "คำขอของฉัน" }, icon: ClipboardList },
+  { href: "/requestment/requests", label: { en: "All Requests", th: "คำขอทั้งหมด" }, icon: ClipboardList },
+  { href: "/requestment/timeline", label: { en: "Timeline", th: "ไทม์ไลน์" }, icon: CalendarDays },
+  { href: "/requestment/reports", label: { en: "Reports", th: "รายงาน" }, icon: BarChart3 },
+  { href: "/requestment/notifications", label: { en: "Notifications", th: "บันทึกอีเมล" }, icon: Bell },
+  { href: "/requestment/users", label: { en: "User Management", th: "จัดการผู้ใช้" }, icon: Users },
+  { href: "/requestment/settings", label: { en: "Settings", th: "ตั้งค่า" }, icon: Settings },
 ];
 
 function isActivePath(pathname: string, href: string) {
-  if (href === "/requests") {
-    return pathname === "/requests" || pathname.startsWith("/requests/");
+  if (href === "/requestment/requests") {
+    return pathname === "/requestment/requests" || pathname.startsWith("/requestment/requests/");
   }
 
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -54,7 +54,7 @@ export function AppFrame({ children }: { children: React.ReactNode }) {
 function AppFrameContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isLogin = pathname === "/login";
+  const isLogin = pathname === "/requestment/login";
   const isProjectHub = pathname === "/home" || pathname === "/tikkiecenter/home";
 
   if (isProjectHub) {
@@ -74,7 +74,7 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-[17rem] border-r border-border bg-white/92 px-4 py-4 shadow-sm backdrop-blur lg:block">
         <Link
-          href="/request"
+          href="/requestment/dashboard"
           className="flex min-h-[68px] items-center rounded-lg border border-white/10 bg-[#0B0F1A] px-4 shadow-[0_14px_36px_rgba(11,15,26,0.18)]"
         >
           <BrandWordmark size="lg" />
@@ -146,7 +146,7 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
 
       <header className="sticky top-0 z-20 border-b border-white/10 bg-[#0B0F1A]/95 text-[#F8FAFC] backdrop-blur-[14px] lg:hidden">
         <div className="flex min-h-16 items-center justify-between gap-3 px-4">
-          <Link href="/request" className="flex min-w-0 items-center">
+          <Link href="/requestment/dashboard" className="flex min-w-0 items-center">
             <BrandWordmark size="sm" />
           </Link>
           <div className="ml-auto">
@@ -203,7 +203,7 @@ function AppFrameContent({ children }: { children: React.ReactNode }) {
               })}
             </nav>
             <Link
-              href="/login"
+              href="/requestment/login"
               onClick={() => setMobileMenuOpen(false)}
               className="flex min-h-11 items-center gap-3 rounded-lg border border-white/10 px-3 text-sm font-semibold text-[#CBD5E1] hover:bg-white/[0.06] hover:text-white"
             >

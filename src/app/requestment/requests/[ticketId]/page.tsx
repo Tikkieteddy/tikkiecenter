@@ -40,11 +40,11 @@ export default async function TaskDetailPage({ params }: TaskDetailPageProps) {
         }
         actions={
           <>
-            <Link href="/requests" className={buttonVariants({ variant: "outline" })}>
+            <Link href="/requestment/requests" className={buttonVariants({ variant: "outline" })}>
               <ArrowLeft aria-hidden="true" />
               <Trans en="Back" th="กลับ" />
             </Link>
-            <Link href={`/requests/${task.ticketId}/update`} className={buttonVariants()}>
+            <Link href={`/requestment/requests/${task.ticketId}/update`} className={buttonVariants()}>
               <Edit3 aria-hidden="true" />
               <Trans en="Update Status" th="อัปเดตสถานะ" />
             </Link>
@@ -207,7 +207,7 @@ export default async function TaskDetailPage({ params }: TaskDetailPageProps) {
               ) : (
                 <EmptyLine text={<Trans en="No email notifications for this task." th="ยังไม่มีอีเมลแจ้งเตือนสำหรับงานนี้" />} />
               )}
-              <Link href="/notifications" className={buttonVariants({ variant: "outline" })}>
+              <Link href="/requestment/notifications" className={buttonVariants({ variant: "outline" })}>
                 <Mail aria-hidden="true" />
                 <Trans en="View all logs" th="ดูบันทึกทั้งหมด" />
               </Link>

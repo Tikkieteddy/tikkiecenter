@@ -41,7 +41,7 @@ export default function DashboardPage() {
           />
         }
         actions={
-          <Link href="/requests/new" className={buttonVariants()}>
+          <Link href="/requestment/requests/new" className={buttonVariants()}>
             <FilePlus2 aria-hidden="true" />
             <Trans en="Create Request" th="สร้างคำขอ" />
           </Link>
@@ -129,7 +129,7 @@ export default function DashboardPage() {
                 <Trans en="Latest updated tickets across all teams." th="รายการที่อัปเดตล่าสุดจากทุกทีม" />
               </p>
             </div>
-            <Link href="/requests" className={buttonVariants({ variant: "outline", size: "sm" })}>
+            <Link href="/requestment/requests" className={buttonVariants({ variant: "outline", size: "sm" })}>
               <Trans en="View all" th="ดูทั้งหมด" />
             </Link>
           </CardHeader>
@@ -161,7 +161,7 @@ export default function DashboardPage() {
               <Separator />
               <div className="grid gap-2">
                 {dueThisWeek.slice(0, 4).map((task) => (
-                  <Link key={task.id} href={`/requests/${task.ticketId}`} className="rounded-lg border border-border p-3 hover:bg-brand-50">
+                  <Link key={task.id} href={`/requestment/requests/${task.ticketId}`} className="rounded-lg border border-border p-3 hover:bg-brand-50">
                     <p className="font-mono text-xs font-semibold text-brand-700">{task.ticketId}</p>
                     <p className="mt-1 text-sm font-semibold">{task.taskTitle}</p>
                   </Link>
@@ -191,7 +191,7 @@ export default function DashboardPage() {
                 </span>
                 <Badge variant="slate">{emailNotifications.filter((email) => email.status === "queued").length}</Badge>
               </div>
-              <Link href="/notifications" className={buttonVariants({ variant: "outline" })}>
+              <Link href="/requestment/notifications" className={buttonVariants({ variant: "outline" })}>
                 <ListChecks aria-hidden="true" />
                 <Trans en="Open notification log" th="เปิดบันทึกอีเมล" />
               </Link>

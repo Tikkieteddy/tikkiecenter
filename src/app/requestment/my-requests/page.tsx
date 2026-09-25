@@ -23,7 +23,7 @@ export default function MyRequestsPage() {
           />
         }
         actions={
-          <Link href="/requests/new" className={buttonVariants()}>
+          <Link href="/requestment/requests/new" className={buttonVariants()}>
             <FilePlus2 aria-hidden="true" />
             <Trans en="New Request" th="คำขอใหม่" />
           </Link>

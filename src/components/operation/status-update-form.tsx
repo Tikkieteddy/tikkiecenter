@@ -55,7 +55,7 @@ export function StatusUpdateForm({ task }: StatusUpdateFormProps) {
         task: previewTask,
         emailType,
         latestComment: comment,
-        taskUrl: `/requests/${task.ticketId}`,
+        taskUrl: `/requestment/requests/${task.ticketId}`,
         updatedAt: "2026-05-18T14:00:00+07:00",
       });
       setResult({ status, ...email });

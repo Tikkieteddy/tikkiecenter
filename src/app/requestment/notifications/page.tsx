@@ -115,7 +115,7 @@ export default function NotificationsPage() {
                   </p>
                 </div>
                 {task ? (
-                  <Link href={`/requests/${task.ticketId}`} className={buttonVariants({ variant: "outline" })}>
+                  <Link href={`/requestment/requests/${task.ticketId}`} className={buttonVariants({ variant: "outline" })}>
                     <Trans en="Open task" th="เปิดงาน" />
                   </Link>
                 ) : null}

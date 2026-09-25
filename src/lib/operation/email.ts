@@ -20,7 +20,7 @@ const emailTypeLabel: Record<EmailType, string> = {
 };
 
 export function buildTaskEmailTemplate({ task, emailType, latestComment, taskUrl, updatedAt }: TemplateInput) {
-  const link = taskUrl ?? `/requests/${task.ticketId}`;
+  const link = taskUrl ?? `/requestment/requests/${task.ticketId}`;
   const subject = `[${task.ticketId}] ${emailTypeLabel[emailType]} - ${task.taskTitle}`;
   const body = [
     `Hello ${task.requesterName},`,

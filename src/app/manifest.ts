@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "ttdLab",
     short_name: "ttdLab",
     description: "Internal project request and task tracking center for Tikkie.",
-    start_url: "/login",
+    start_url: "/requestment/login",
     display: "standalone",
     background_color: "#0B0F1A",
     theme_color: "#0B0F1A",

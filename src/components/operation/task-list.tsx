@@ -74,7 +74,7 @@ export function TaskList({ tasks, emptyMessage = "No requests found.", compact =
                 </TableCell>
                 {!compact ? <TableCell>{getAssigneeName(task.assigneeId)}</TableCell> : null}
                 <TableCell>
-                  <Link className={buttonVariants({ size: "sm", variant: "outline" })} href={`/requests/${task.ticketId}`}>
+                  <Link className={buttonVariants({ size: "sm", variant: "outline" })} href={`/requestment/requests/${task.ticketId}`}>
                     <Eye aria-hidden="true" />
                     <Trans en="View" th="ดู" />
                   </Link>
@@ -98,7 +98,7 @@ export function TaskList({ tasks, emptyMessage = "No requests found.", compact =
                   </p>
                 </div>
                 <Link
-                  href={`/requests/${task.ticketId}`}
+                  href={`/requestment/requests/${task.ticketId}`}
                   className="grid size-10 shrink-0 place-items-center rounded-lg border border-border bg-white text-brand-700 shadow-sm"
                   aria-label={`View ${task.ticketId}`}
                 >
