@@ -1,15 +1,15 @@
-import { ArrowUpRight, BatteryCharging, Calculator, ClipboardList, ListChecks, Sparkles } from "lucide-react";
+import { Archive, ArrowUpRight, BatteryCharging, Calculator, ClipboardList, ListChecks, Sparkles } from "lucide-react";
 import { BrandWordmark } from "@/components/brand/brand-wordmark";
 import { VersionFooter } from "@/components/version-footer";
 
 const projects = [
   {
-    title: "คำนวณไทยช่วยไทย 60/40",
-    eyebrow: "Thai Help Calculator",
-    href: "https://thai-help-calculator.vercel.app",
-    description: "กรอกราคาสินค้า แล้วดูทันทีว่ารัฐช่วยเท่าไหร่ เราจ่ายเท่าไหร่ และสิทธิคงเหลือวันนี้เท่าไหร่",
-    icon: Calculator,
-    metric: "60% / สูงสุด 200 บาท",
+    title: "ttdLab Archive",
+    eyebrow: "Archive",
+    href: "https://archive.ttdlab.workers.dev/",
+    description: "เข้าใช้งานเว็บ Archive ของ ttdLab",
+    icon: Archive,
+    metric: "ttdLab Archive",
     accent: "from-[#22D3EE] via-[#3B82F6] to-[#8B5CF6]",
   },
   {
@@ -37,6 +37,15 @@ const projects = [
     description: "จัดการ Technical Workflow ตั้งแต่บรีฟ มอบหมาย ติดตาม UAT และตรวจรับงาน พร้อมหน้าเดโมสำหรับทดสอบการใช้งาน",
     icon: ListChecks,
     metric: "Brief / Workflow / UAT",
+    accent: "from-[#22D3EE] via-[#3B82F6] to-[#8B5CF6]",
+  },
+  {
+    title: "คำนวณไทยช่วยไทย 60/40",
+    eyebrow: "Thai Help Calculator",
+    href: "https://thai-help-calculator.vercel.app",
+    description: "กรอกราคาสินค้า แล้วดูทันทีว่ารัฐช่วยเท่าไหร่ เราจ่ายเท่าไหร่ และสิทธิคงเหลือวันนี้เท่าไหร่",
+    icon: Calculator,
+    metric: "60% / สูงสุด 200 บาท",
     accent: "from-[#22D3EE] via-[#3B82F6] to-[#8B5CF6]",
   },
 ];
