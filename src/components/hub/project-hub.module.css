@@ -1,7 +1,6 @@
 .surface { font-family: "Sora Local", "Tahoma", "Segoe UI", sans-serif; font-weight: 500; letter-spacing: 0; min-height: 100vh; color: #f8fafc; overflow: hidden; }
 .shell { position: relative; z-index: 1; width: min(100%, 1280px); min-height: 100vh; margin: auto; padding: 0 32px; display: flex; flex-direction: column; }
 .header { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid #ffffff12; }
-.login { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 16px; border-radius: 8px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); border: 1px solid #ffffff24; font-size: 13px; font-weight: 700; }
 .content { flex: 1; padding: 56px 0 40px; display: grid; grid-template-columns: minmax(220px, .65fr) minmax(0, 1.9fr); align-content: center; align-items: start; gap: 36px; }
 .heading { text-align: left; padding-top: 16px; }
 .introBadge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid #3b82f64d; border-radius: 8px; background: #3b82f61a; color: #c7d2fe; font-size: 12px; font-weight: 700; }

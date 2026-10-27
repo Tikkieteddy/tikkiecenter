@@ -25,7 +25,6 @@ export function ProjectHub({ group }: { group?: Group }) {
       <div className={styles.shell}>
         <header className={styles.header}>
           <Link href="/home" aria-label="ttdLab Home"><BrandWordmark size="lg" /></Link>
-          <Link href="/requestment/login" className={styles.login}>เข้าระบบ <ArrowUpRight size={16} aria-hidden="true" /></Link>
         </header>
         <section className={styles.content}>
           <div className={styles.heading}>
