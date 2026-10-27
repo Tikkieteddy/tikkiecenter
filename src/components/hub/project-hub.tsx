@@ -48,9 +48,6 @@ export function ProjectHub({ group }: { group?: Group }) {
             </div>
           ) : (
             <div className={styles.groupContent}>
-              <nav className={styles.switcher} aria-label="กลุ่มโปรเจกต์">
-                {(Object.keys(groups) as Group[]).map((key) => <Link key={key} href={`/home/${key}`} aria-current={key === group ? "page" : undefined}>{groups[key].name}</Link>)}
-              </nav>
               <ul className={styles.projects}>
                 {visibleProjects.map((project) => {
                   const Icon = project.icon;
