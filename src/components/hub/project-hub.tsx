@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Archive, ArrowLeft, ArrowRight, ArrowUpRight, BatteryCharging, BriefcaseBusiness, Calculator, ClipboardList, ListChecks, UserRound } from "lucide-react";
+import { Archive, ArrowLeft, ArrowRight, ArrowUpRight, BatteryCharging, BriefcaseBusiness, Calculator, ClipboardList, ListChecks, Sparkles, UserRound } from "lucide-react";
 import { BrandWordmark } from "@/components/brand/brand-wordmark";
 import { VersionFooter } from "@/components/version-footer";
 import styles from "./project-hub.module.css";
@@ -21,17 +21,17 @@ export function ProjectHub({ group }: { group?: Group }) {
   const selected = group ? groups[group] : null;
   const visibleProjects = projects.filter((project) => project.group === group);
   return (
-    <main className={styles.surface}>
+    <main className={`brand-orbit-surface ${styles.surface}`}>
       <div className={styles.shell}>
         <header className={styles.header}>
           <Link href="/home" aria-label="ttdLab Home"><BrandWordmark size="lg" /></Link>
-          <span className={styles.headerLabel}>Tikkie Center</span>
+          <Link href="/requestment/login" className={styles.login}>เข้าระบบ <ArrowUpRight size={16} aria-hidden="true" /></Link>
         </header>
         <section className={styles.content}>
           <div className={styles.heading}>
-            {group ? <Link href="/home" className={styles.back}><ArrowLeft size={16} aria-hidden="true" /> ทุกโปรเจกต์</Link> : <p className={styles.eyebrow}>YOUR PROJECT SPACE</p>}
+            {group ? <Link href="/home" className={styles.back}><ArrowLeft size={16} aria-hidden="true" /> ทุกโปรเจกต์</Link> : <span className={styles.introBadge}><Sparkles size={14} aria-hidden="true" /> ศูนย์รวมโปรเจกต์ของติ๊ก</span>}
             <h1>{selected?.name ?? "Tikkie Center"}</h1>
-            <p className={styles.subtitle}>{selected?.description ?? "พื้นที่รวมโปรเจกต์ของติ๊ก ทั้งเรื่องส่วนตัวและงานธุรกิจ"}</p>
+            <p className={styles.subtitle}>{selected?.description ?? "หน้าเดียวสำหรับเข้าใช้งานทุกโปรเจกต์สำคัญ เลือกกลุ่มที่ต้องการ แล้วไปต่อได้ทันที"}</p>
           </div>
           {!group ? (
             <div className={styles.categories}>
@@ -62,7 +62,7 @@ export function ProjectHub({ group }: { group?: Group }) {
                         <div className={styles.projectCopy}>
                           <span className={styles.eyebrow}>{project.label}</span><h2>{project.title}</h2><p>{project.description}</p>
                         </div>
-                        <span className={styles.open}><ArrowUpRight size={20} aria-hidden="true" /></span>
+                        <span className={styles.open}><span className={styles.openLabel}>Open</span><ArrowUpRight size={16} aria-hidden="true" /></span>
                       </a>
                     </li>
                   );
