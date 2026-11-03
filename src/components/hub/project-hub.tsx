@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Archive, ArrowLeft, ArrowRight, ArrowUpRight, BatteryCharging, BriefcaseBusiness, Calculator, ClipboardList, ListChecks, Sparkles, UserRound } from "lucide-react";
+import { Archive, ArrowLeft, ArrowRight, ArrowUpRight, BatteryCharging, BriefcaseBusiness, Calculator, ClipboardList, HeartHandshake, ListChecks, Sparkles, UserRound } from "lucide-react";
 import { BrandWordmark } from "@/components/brand/brand-wordmark";
 import { VersionFooter } from "@/components/version-footer";
 import styles from "./project-hub.module.css";
@@ -14,6 +14,7 @@ const projects = [
   { group: "personal", title: "EV Charge Daily Calculator", label: "EV Power", description: "คำนวณค่าชาร์จรถ EV รายวัน รายสัปดาห์ รายเดือน และประมาณการล่วงหน้า", href: "https://evpower-beta.vercel.app/", icon: BatteryCharging },
   { group: "business", title: "ระบบติดตามคำขอภายใน", label: "Tikkie Center", description: "ส่งงาน ติดตามสถานะ ดูบันทึกอีเมล และรายงาน", href: "/requestment/login", icon: ClipboardList },
   { group: "business", title: "Requirement & Acceptance Management System", label: "Model Web Mock", description: "จัดการบรีฟ มอบหมายงาน ติดตาม UAT และตรวจรับงาน", href: "https://model-web-mock.vercel.app/", icon: ListChecks },
+  { group: "personal", title: "ข้อมูลการรับบริจาค", label: "Donation Information", description: "ข้อมูลวิเคราะห์โรงพยาบาลห่างไกล ความยากจน และความเพียงพอของงบประมาณ", href: "/donation-information.html", icon: HeartHandshake },
   { group: "personal", title: "คำนวณไทยช่วยไทย 60/40", label: "Thai Help Calculator", description: "คำนวณส่วนที่รัฐช่วย ค่าใช้จ่ายของเรา และสิทธิคงเหลือวันนี้", href: "https://thai-help-calculator.vercel.app", icon: Calculator },
 ];
 
