@@ -11,6 +11,14 @@ const groups = {
 };
 const projects = [
   { group: "personal", title: "ttdLab Archive", label: "Archive", description: "เข้าใช้งานเว็บ Archive ของ ttdLab", href: "https://archive.ttdlab.workers.dev/", icon: Archive },
+  {
+    group: "personal",
+    title: "TaskHub",
+    label: "PDCA",
+    description: "เว็บจัดการงานแบบ PDCA เปิดด้วยรหัสผ่านเฉพาะหน้า และแก้งานได้ในตารางเดียวแบบ Google Sheets ระบบคำนวณความคืบหน้าให้อัตโนมัติ แตกงานเป็นรายการย่อยแล้วมอบหมายข้ามทีมได้ และเตือนงานใกล้กำหนดส่ง",
+    href: "https://taskhub.ttdlab.workers.dev/",
+    icon: ListChecks,
+  },
   { group: "personal", title: "EV Charge Daily Calculator", label: "EV Power", description: "คำนวณค่าชาร์จรถ EV รายวัน รายสัปดาห์ รายเดือน และประมาณการล่วงหน้า", href: "https://evpower-beta.vercel.app/", icon: BatteryCharging },
   { group: "business", title: "ระบบติดตามคำขอภายใน", label: "Tikkie Center", description: "ส่งงาน ติดตามสถานะ ดูบันทึกอีเมล และรายงาน", href: "/requestment/login", icon: ClipboardList },
   { group: "business", title: "Requirement & Acceptance Management System", label: "Model Web Mock", description: "จัดการบรีฟ มอบหมายงาน ติดตาม UAT และตรวจรับงาน", href: "https://model-web-mock.vercel.app/", icon: ListChecks },
