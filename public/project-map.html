@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2;--card:#fff;--ink:#1d1c1a;--soft:#5f5c56;--faint:#8b877f;--line:#e6e3dc;--chip:#f0eee9;--hover:#faf9f6;
+  --blue:#2f5d8a;--blue-bg:#e8eff7;--green:#2e7d4f;--green-bg:#e5f2ea;--amber:#9a5a00;--amber-bg:#fbefd8;--violet:#6a4c93;--violet-bg:#efe9f7;--rose:#a63d5b;--rose-bg:#f8e6ec;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#151513;--card:#1e1d1b;--ink:#eceae5;--soft:#b3afa7;--faint:#8a867e;--line:#302e2a;--chip:#282723;--hover:#24231f;
+  --blue:#8bb8e3;--blue-bg:#1d2a38;--green:#80c99d;--green-bg:#1c2e23;--amber:#e8b56a;--amber-bg:#352915;--violet:#c3a8e8;--violet-bg:#2a2236;--rose:#ec9ab3;--rose-bg:#3a1f28;}}
+:root[data-theme="dark"]{
+  --bg:#151513;--card:#1e1d1b;--ink:#eceae5;--soft:#b3afa7;--faint:#8a867e;--line:#302e2a;--chip:#282723;--hover:#24231f;
+  --blue:#8bb8e3;--blue-bg:#1d2a38;--green:#80c99d;--green-bg:#1c2e23;--amber:#e8b56a;--amber-bg:#352915;--violet:#c3a8e8;--violet-bg:#2a2236;--rose:#ec9ab3;--rose-bg:#3a1f28;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 "IBM Plex Sans Thai",system-ui,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:44px 16px 16px}
+h1{font-size:28px;font-weight:600;line-height:1.3;margin:0 0 4px}
+.sub{color:var(--soft);margin:0}
+code,.path{font:12.5px/1.5 "IBM Plex Mono",ui-monospace,monospace}
+.path{color:var(--soft);background:var(--chip);padding:1px 7px;border-radius:6px;cursor:pointer;word-break:break-all}
+.path:hover{color:var(--blue)}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:28px 0 12px}
+.bar input{flex:1 1 220px;font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.f{font:inherit;font-size:13.5px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--soft);cursor:pointer}
+.f.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.bar .sp{flex-basis:100%;height:0}
+.bar button.x{font:inherit;font-size:13px;border:none;background:none;color:var(--blue);cursor:pointer;padding:4px 6px}
+
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.head,.row>.main{display:grid;grid-template-columns:34px 2fr 1.25fr 1.7fr 1.5fr 2.2fr;gap:12px;align-items:center;padding:11px 16px}
+.head{background:var(--chip);color:var(--faint);font-size:12.5px;font-weight:600;padding-top:9px;padding-bottom:9px}
+.head span.ar{color:var(--faint)}
+.row{border-top:1px solid var(--line)}
+.row>.main{cursor:pointer}
+.row>.main:hover{background:var(--hover)}
+.n{color:var(--faint);font-size:13px;text-align:right}
+.name{font-weight:600;display:flex;align-items:center;gap:8px}
+.name .chev{display:inline-block;width:14px;color:var(--faint);transition:transform .15s;font-size:11px}
+.row.open .chev{transform:rotate(90deg)}
+.desc{display:block;font-weight:400;color:var(--soft);font-size:13px;line-height:1.4}
+.dash{color:var(--faint)}
+.tag{display:inline-block;font-size:12px;padding:1px 9px;border-radius:999px;font-weight:500;white-space:nowrap;margin:1px 2px 1px 0}
+.t-blue{background:var(--blue-bg);color:var(--blue)}
+.t-violet{background:var(--violet-bg);color:var(--violet)}
+.t-amber{background:var(--amber-bg);color:var(--amber)}
+.t-green{background:var(--green-bg);color:var(--green)}
+.t-rose{background:var(--rose-bg);color:var(--rose)}
+.t-gray{background:var(--chip);color:var(--soft)}
+.dest{font:12px/1.45 "IBM Plex Mono",ui-monospace,monospace;color:var(--soft);word-break:break-all}
+
+.detail{display:none;padding:4px 16px 18px 62px}
+.row.open .detail{display:block}
+.detail dl{display:grid;grid-template-columns:140px 1fr;gap:6px 16px;margin:0;font-size:14px;background:var(--hover);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.detail dt{color:var(--faint)}
+.detail dd{margin:0}
+.warn{color:var(--amber)}
+
+.group{padding:9px 16px;background:var(--bg);border-top:1px solid var(--line);font-size:13px;font-weight:600;color:var(--soft)}
+.empty{padding:28px;text-align:center;color:var(--faint);display:none}
+
+.legend{color:var(--faint);font-size:13px;margin:10px 2px 0}
+section{margin-top:44px}
+h2{font-size:18px;font-weight:600;margin:0 0 10px}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:14px}
+.mini li{display:flex;justify-content:space-between;gap:14px;padding:10px 16px;border-top:1px solid var(--line);font-size:14px}
+.mini li:first-child{border-top:none}
+.mini ul{list-style:none;margin:0;padding:0}
+.mini .r{color:var(--faint);text-align:right}
+.todo li{border-left:3px solid var(--amber)}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:6px 14px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}
+
+@media (max-width:820px){
+  .head{display:none}
+  .row>.main{grid-template-columns:1fr;gap:4px;padding:14px 16px}
+  .n{display:none}
+  .row>.main>[data-l]::before{content:attr(data-l);display:inline-block;min-width:78px;color:var(--faint);font-size:12.5px}
+  .detail{padding:0 16px 16px}
+  .detail dl{grid-template-columns:1fr;gap:0 0}
+  .detail dt{margin-top:8px}
+  .mini li{flex-direction:column;gap:0}.mini .r{text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>แผนที่โปรเจค AI</h1>
+<p class="sub">อัปเดต 20 พ.ย. 2026 · โฟลเดอร์หลัก <span class="path">C:\Users\TIKKIE\Desktop\tik project\ai</span> · คลิกแต่ละแถวเพื่อดูรายละเอียด</p>
+
+<div class="bar">
+  <input id="q" type="search" placeholder="ค้นหาชื่องาน, repo, โฟลเดอร์…" aria-label="ค้นหา">
+  <button class="x" id="all">เปิดทั้งหมด</button>
+  <div class="sp"></div>
+  <button class="f on" data-g="*">ทั้งหมด</button>
+  <button class="f" data-g="Tikkieteddy">Tikkieteddy</button>
+  <button class="f" data-g="tnndigital">tnndigital</button>
+  <button class="f" data-g="none">ยังไม่มี GitHub</button>
+</div>
+
+<div class="tbl" id="tbl">
+  <div class="head"><span></span><span>งาน</span><span>GitHub</span><span>Repo</span><span>AI ที่ใช้</span><span>โฟลเดอร์ปลายทาง</span></div>
+  <div id="rows"></div>
+  <div class="empty" id="empty">ไม่พบงานที่ค้นหา</div>
+</div>
+<p class="legend">AI ที่ใช้ ดูจากประวัติในเครื่อง (Claude Code, Codex, Cowork) และ commit · "ไม่ทราบ" = ไม่พบหลักฐานในเครื่อง</p>
+
+<section>
+  <h2>ต้องทำต่อ</h2>
+  <div class="mini todo"><ul>
+    <li><span>ลบโฟลเดอร์ว่าง <span class="path">Desktop\2026\###AI Project</span> และ <span class="path">Documents\New project</span></span><span class="r">ปิด–เปิดแอป Claude และ Codex ก่อน</span></li>
+    <li><span>เปิด session ใหม่จากโฟลเดอร์ใหม่</span><span class="r">session เก่ายังชี้ path เดิม</span></li>
+    <li><span>เช็กเว็บ tikkiecenter หลัง deploy</span><span class="r">ดูว่า Vercel ขึ้น Ready</span></li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>นอกตาราง</h2>
+  <div class="mini"><ul>
+    <li><span><b>doc\</b> เอกสารมาตรฐาน 3 ชุด</span><span class="r">CLAUDE.md ชี้มาที่นี่</span></li>
+    <li><span><b>material\</b> ฟอนต์ รูป และไฟล์สำรอง</span><span class="r">af-dashboard.env.local · tnnhub-local-backup · tikkiecenter-local-backup</span></li>
+    <li><span><b>ไม่ย้าย</b> web-contact2026, revamp article page, เลือกตั้ง2569, Desktop\tnnhub, TNN Hub Weekly Analysis</span><span class="r">ไม่ใช่งาน AI หรือยังไม่ควรแตะ</span></li>
+  </ul></div>
+</section>
+
+<div id="toast">คัดลอกแล้ว</div>
+</div>
+
+<script>
+var ROOT='C:\\Users\\TIKKIE\\Desktop\\tik project\\ai\\github-name\\';
+// [ชื่อ, คำอธิบาย, บัญชี, repo, [AI], โฟลเดอร์ (ต่อจาก github-name\), {รายละเอียด}]
+var P=[
+ ['tikkiecenter','เว็บรวมงาน + ระบบ Newsroom','Tikkieteddy','tikkiecenter',['Codex','Claude Code'],'Tikkieteddy\\tikkiecenter',
+  {'Branch':'master (ล่าสุด)','Commit ล่าสุด':'20 พ.ย. 2026 · fix(deps): แก้ช่องโหว่ npm 9 → 0','Deploy':'Vercel (push master = deploy)','งานค้าง':'งาน Newsroom อยู่ branch <code>wip/newsroom-editors-2026-05</code> (push แล้ว)','สำรอง':'material\\tikkiecenter-local-backup-20261120','ย้ายมาจาก':'Documents\\New project'}],
+ ['tnnhub','Dashboard / insights ของ TNN','Tikkieteddy','tnnhub',['Claude Code','Cowork'],'Tikkieteddy\\tnnhub',
+  {'Branch':'main (ล่าสุด)','Commit ล่าสุด':'19 พ.ย. 2026 · docs(state): trim','Deploy':'Vercel','งานเดิม':'เก็บไว้ที่ branch <code>backup/tnn-responsive-dashboard-20261120</code>','สำรอง':'material\\tnnhub-local-backup-20261120 (ร่าง + .patch)','หมายเหตุ':'ใช้ pnpm · ต้องมี pnpm-workspace.yaml'}],
+ ['trip-plan','วางแผนทริป','Tikkieteddy','trip-planner',['Codex','Claude Code'],'Tikkieteddy\\trip-plan',
+  {'Branch':'ci/github-actions','Commit ล่าสุด':'20 พ.ย. 2026','Deploy':'Vercel','เอกสาร AI':'AGENTS.md (Codex) + CLAUDE.md'}],
+ ['evpower','วางแผนเดินทางรถ EV','Tikkieteddy','evpower',['Codex','Claude Code'],'Tikkieteddy\\evpower-work',
+  {'Branch':'master','Commit ล่าสุด':'28 ต.ค. 2026 · Refresh handover docs','Deploy':'Vercel','หมายเหตุ':'เริ่มใน Codex แล้วส่งต่อ Claude Code (HANDOVER.md)','ย้ายมาจาก':'Documents\\New project\\evpower-work'}],
+ ['model-web','เว็บโมเดล + ระบบคอมเมนต์','Tikkieteddy','model-web',['Claude Code'],'Tikkieteddy\\model-web',
+  {'Branch':'main','Commit ล่าสุด':'24 ก.ย. 2026 · เพิ่ม role edit','Deploy':'Vercel','ย้ายมาจาก':'Desktop\\web develop\\2026\\model-web'}],
+ ['register-app','ระบบลงทะเบียนงาน (event)','Tikkieteddy','register',['Claude Code (web)'],'Tikkieteddy\\register-app',
+  {'Branch':'claude/event-registration-step-0-i9ulcz','Commit ล่าสุด':'17 ก.ย. 2026','Deploy':'Vercel','งานค้าง':'<span class="warn">1 ไฟล์ยังไม่ commit (ค้างจากเดิม)</span>','ข้อมูลตั้งต้น':'none\\register (brief + prompt)'}],
+ ['inform-user-web-2026','เว็บแจ้งข้อมูลผู้ใช้','Tikkieteddy','inform-user-web-2026',['Codex'],'Tikkieteddy\\inform-user-web-2026',
+  {'Branch':'main','Commit ล่าสุด':'3 ก.ย. 2026','Deploy':'Vercel','หมายเหตุ':'ลบชุดซ้ำแล้ว เหลือชุดเดียว'}],
+ ['thai-help-calculator','เครื่องคำนวณสิทธิ์ช่วยเหลือ','Tikkieteddy','thai-help-calculator',['Codex'],'Tikkieteddy\\thai-help-calculator',
+  {'Branch':'main','Commit ล่าสุด':'27 พ.ค. 2026','Deploy':'Vercel'}],
+ ['tnndashboard','รายงานรายสัปดาห์ TNN','Tikkieteddy','tnndashboard',['Cowork'],'Tikkieteddy\\tnndashboard',
+  {'Branch':'main','Commit ล่าสุด':'16 เม.ย. 2026','หมายเหตุ':'ลบชุดซ้ำ 2 ชุดแล้ว (อยู่ในถังขยะ)'}],
+ ['tik calendar','ปฏิทินผ่าน LINE','Tikkieteddy','my-calendar',['Cowork'],'Tikkieteddy\\tik calendar',
+  {'Repo อยู่ที่':'โฟลเดอร์ย่อย <code>my-calendar</code>','Commit ล่าสุด':'27 มี.ค. 2026','งานคู่กัน':'none\\my-calendar-bot (Firebase)'}],
+ ['ChartCraft','ชุดเริ่มต้นทำ dashboard','Tikkieteddy','ChartCraft',['ไม่ทราบ'],'Tikkieteddy\\ChartCraft',
+  {'สถานะ':'<span class="warn">.git ว่าง · ถ้าจะใช้ต่อให้ clone ใหม่จาก GitHub</span>','ข้างใน':'starter repo + zip + engineering kit'}],
+ ['digital-archive','คลังข่าวดิจิทัล (งานบริษัท)','tnndigital','digital-archive',['Claude Code'],'tnndigital\\digital-archive',
+  {'Repo อยู่ที่':'โฟลเดอร์ย่อย <code>app</code>','สิทธิ์':'private','Branch':'main','Commit ล่าสุด':'19 พ.ย. 2026 · V.1.7.0 แจ้งเตือน error ทาง LINE','บัญชี push':'tnndigital'}],
+ ['taskhub','จัดการงาน PDCA หลาย workspace','none','',['Claude Code'],'none\\taskhub',
+  {'Git':'มีในเครื่อง (main) แต่ไม่มี remote','Deploy':'Cloudflare Workers · taskhub.ttdlab.workers.dev','งานค้าง':'2 ไฟล์ (แก้ path ใน CLAUDE.md, README.md) · ตัดสินใจแล้วว่าไม่ต้องทำอะไร','ความเสี่ยง':'<span class="warn">มีแค่ในเครื่องนี้</span>'}],
+ ['ttdLab-archive','คลังไฟล์ ttdLab','none','',['Cowork'],'none\\ttdLab-archive',
+  {'Deploy':'Cloudflare Workers · archive.ttdlab.workers.dev','ไฟล์':'DEPLOY.md, DESIGN.md, deploy.bat'}],
+ ['Talk-To-Act','ระบบสั่งงานด้วยเสียง (เดโม)','none','',['ไม่ทราบ'],'none\\Talk-To-Act',
+  {'ข้างใน':'brief, requirement, UI demo, โฟลเดอร์ vercel','สถานะ':'handoff 31 ส.ค. 2026'}],
+ ['my-calendar-bot','บอทปฏิทิน LINE (Firebase)','none','',['Cowork'],'none\\my-calendar-bot',
+  {'ข้างใน':'Firebase functions + Firestore rules','งานคู่กัน':'Tikkieteddy\\tik calendar'}],
+ ['meeting booking','ระบบจองห้องประชุม TNN','none','',['ไม่ทราบ'],'none\\meeting booking',
+  {'ข้างใน':'handoff + brief สำหรับ Claude Code + SQL','หมายเหตุ':'GitHub มี repo meeting-booking แต่ไม่มีในเครื่อง'}],
+ ['register','brief ระบบลงทะเบียน','none','',['ไม่ทราบ'],'none\\register',
+  {'ข้างใน':'START-HERE.md, prompt, workflow diagram','งานจริง':'Tikkieteddy\\register-app'}],
+ ['user profile','หน้าโปรไฟล์ผู้ใช้','none','',['ไม่ทราบ'],'none\\user profile',
+  {'ข้างใน':'โปรเจค Next.js + mock data'}],
+ ['user-profile-queue','รายชื่อผู้ใช้ (brief)','none','',['Codex'],'none\\user-profile-queue',
+  {'ข้างใน':'codex-brief + ไฟล์ข้อมูล TSV/HTML'}],
+ ['todolist','To-do list แชร์ได้','none','',['Cowork'],'none\\todolist',
+  {'ข้างใน':'index.html, taskboard.html, คู่มือ GitHub Pages'}],
+ ['project ai thesis','AI กับงานข่าวออนไลน์','none','',['Cowork'],'none\\project ai thesis',
+  {'ข้างใน':'รายงาน NARA Newsroom AI + วิทยานิพนธ์ (PDF)'}],
+ ['image studio','TNN Image Studio','none','',['ไม่ทราบ'],'none\\image studio',
+  {'ข้างใน':'zip handoff v1.4.1 อย่างเดียว'}]
+];
+var AIC={'Claude Code':'t-rose','Claude Code (web)':'t-rose','Codex':'t-green','Cowork':'t-amber','ไม่ทราบ':'t-gray'};
+var ACC={'Tikkieteddy':['t-blue','Tikkieteddy'],'tnndigital':['t-violet','tnndigital'],'none':['t-gray','ไม่มี']};
+var LBL={'Tikkieteddy':'Tikkieteddy · ส่วนตัว','tnndigital':'tnndigital · งานบริษัท','none':'ยังไม่มี GitHub'};
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+var html='',last='',i=0;
+P.forEach(function(p){
+  if(p[2]!==last){last=p[2];html+='<div class="group" data-g="'+p[2]+'">'+LBL[p[2]]+'</div>';}
+  i++;
+  var a=ACC[p[2]],repo=p[3]?'<a href="https://github.com/'+p[2]+'/'+p[3]+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+p[3]+'</a>':'<span class="dash">—</span>';
+  var ai=p[4].map(function(x){return '<span class="tag '+(AIC[x]||'t-gray')+'">'+x+'</span>'}).join('');
+  var dl='<dt>โฟลเดอร์เต็ม</dt><dd><span class="path">'+esc(ROOT+p[5])+'</span></dd>';
+  for(var k in p[6]) dl+='<dt>'+k+'</dt><dd>'+p[6][k]+'</dd>';
+  html+='<div class="row" data-g="'+p[2]+'" data-s="'+esc((p[0]+' '+p[1]+' '+p[3]+' '+p[4].join(' ')+' '+p[5]).toLowerCase())+'">'
+   +'<div class="main" tabindex="0" role="button" aria-expanded="false">'
+   +'<span class="n">'+i+'</span>'
+   +'<span class="name" data-l="งาน"><span><span class="chev">▶</span> '+esc(p[0])+'<span class="desc">'+esc(p[1])+'</span></span></span>'
+   +'<span data-l="GitHub"><span class="tag '+a[0]+'">'+a[1]+'</span></span>'
+   +'<span data-l="Repo">'+repo+'</span>'
+   +'<span data-l="AI">'+ai+'</span>'
+   +'<span class="dest" data-l="โฟลเดอร์">'+esc(p[5])+'</span>'
+   +'</div><div class="detail"><dl>'+dl+'</dl></div></div>';
+});
+document.getElementById('rows').innerHTML=html;
+
+function toggle(r,on){r.classList.toggle('open',on);r.querySelector('.main').setAttribute('aria-expanded',r.classList.contains('open'))}
+document.querySelectorAll('.row .main').forEach(function(m){
+  m.addEventListener('click',function(){toggle(m.parentNode)});
+  m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(m.parentNode)}});
+});
+var allBtn=document.getElementById('all');
+allBtn.addEventListener('click',function(){
+  var open=allBtn.textContent==='เปิดทั้งหมด';
+  document.querySelectorAll('.row').forEach(function(r){if(r.style.display!=='none')toggle(r,open)});
+  allBtn.textContent=open?'ปิดทั้งหมด':'เปิดทั้งหมด';
+});
+var g='*';
+function apply(){
+  var q=document.getElementById('q').value.trim().toLowerCase(),shown={},any=false;
+  document.querySelectorAll('.row').forEach(function(r){
+    var ok=(g==='*'||r.dataset.g===g)&&(!q||r.dataset.s.indexOf(q)>=0);
+    r.style.display=ok?'':'none';if(ok){shown[r.dataset.g]=1;any=true}
+  });
+  document.querySelectorAll('.group').forEach(function(h){h.style.display=shown[h.dataset.g]?'':'none'});
+  document.getElementById('empty').style.display=any?'none':'block';
+}
+document.getElementById('q').addEventListener('input',apply);
+document.querySelectorAll('.f').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('.f').forEach(function(x){x.classList.remove('on')});b.classList.add('on');g=b.dataset.g;apply();
+})});
+document.addEventListener('click',function(e){var el=e.target.closest('.path');if(!el)return;e.stopPropagation();
+  try{navigator.clipboard.writeText(el.textContent).then(function(){var t=document.getElementById('toast');t.style.opacity=1;setTimeout(function(){t.style.opacity=0},1200)})}catch(err){}
+});
+document.querySelectorAll('.path').forEach(function(el){el.title='คลิกเพื่อคัดลอก'});
+</script>
+
+<div class="ttd-footer" role="contentinfo">© <span class="ttd-year">2026</span> ttdLab | <span class="ttd-ver" tabindex="0" data-full="V.2.1.0+20261120.1">V.2</span></div>
+<style>
+.ttd-footer{all:initial;display:block;padding:20px 16px 28px;text-align:center;font:12px/1.5 system-ui,sans-serif;color:#737373}
+.ttd-footer.ttd-dark{color:#a3a3a3}
+.ttd-footer .ttd-ver{position:relative;cursor:help}
+.ttd-footer .ttd-ver::after{content:attr(data-full);position:absolute;bottom:150%;left:50%;transform:translateX(-50%);white-space:nowrap;background:#262626;color:#fff;font:11px ui-monospace,monospace;padding:4px 8px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .15s}
+.ttd-footer .ttd-ver:hover::after,.ttd-footer .ttd-ver:focus::after{opacity:1}
+</style>
+<script>(function(){var s=2026,y=new Date().getFullYear(),f;try{f=window.self!==window.top}catch(e){f=true}
+document.querySelectorAll(".ttd-footer").forEach(function(el){if(f){el.style.display="none";return}
+var ye=el.querySelector(".ttd-year");if(ye)ye.textContent=y>s?s+"-"+y:""+s;
+var m=/rgba?\(([^)]+)\)/.exec(getComputedStyle(document.body).backgroundColor);if(m){var p=m[1].split(",").map(parseFloat);
+if(!(p.length>3&&p[3]===0)&&(0.2126*p[0]+0.7152*p[1]+0.0722*p[2])/255<0.4)el.className+=" ttd-dark"}});})();</script>
+</body>
+</html>

@@ -8,6 +8,10 @@
 .heading h1 { margin: 12px 0; font-size: 36px; font-weight: 800; color: #fff; line-height: 1.2; }
 .eyebrow { color: #74c7fa; font-size: 12px; font-weight: 700; }
 .subtitle { color: #cbd5e1; font-size: 13px; font-weight: 600; line-height: 1.9; max-width: 280px; }
+.mapLink { display: flex; align-items: center; gap: 12px; width: 100%; max-width: 280px; min-height: 56px; margin-top: 28px; padding: 14px 16px; border: 1px solid #3b82f659; border-radius: 8px; background: #111827e6; color: #f8fafc; font-size: 15px; font-weight: 800; transition: border-color 180ms ease, background 180ms ease; }
+.mapLink svg { flex-shrink: 0; color: #22d3ee; }
+.mapLink span { flex: 1; }
+.mapLink:hover { border-color: #22d3ee; background: #123241; }
 .back { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: #cbd5e1; min-height: 40px; }
 .categories { display: grid; grid-template-columns: repeat(2, minmax(0, 320px)); justify-content: center; gap: 24px; padding: 8px 0 24px; }
 .personal { --accent: #22d3ee; --tint: #123241; }

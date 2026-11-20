@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Archive, ArrowLeft, ArrowRight, ArrowUpRight, BatteryCharging, BriefcaseBusiness, Calculator, ClipboardList, HeartHandshake, ListChecks, Sparkles, UserRound } from "lucide-react";
+import { Archive, ArrowLeft, ArrowRight, ArrowUpRight, BatteryCharging, BriefcaseBusiness, Calculator, ClipboardList, FolderTree, HeartHandshake, ListChecks, Sparkles, UserRound } from "lucide-react";
 import { BrandWordmark } from "@/components/brand/brand-wordmark";
 import { VersionFooter } from "@/components/version-footer";
 import styles from "./project-hub.module.css";
@@ -40,6 +40,13 @@ export function ProjectHub({ group }: { group?: Group }) {
             {group ? <Link href="/home" className={styles.back}><ArrowLeft size={16} aria-hidden="true" /> ทุกโปรเจกต์</Link> : <span className={styles.introBadge}><Sparkles size={14} aria-hidden="true" /> ศูนย์รวมโปรเจกต์ของติ๊ก</span>}
             <h1>{selected?.name ?? "Tikkie Center"}</h1>
             <p className={styles.subtitle}>{selected?.description ?? "หน้าเดียวสำหรับเข้าใช้งานทุกโปรเจกต์สำคัญ เลือกกลุ่มที่ต้องการ แล้วไปต่อได้ทันที"}</p>
+            {group === "personal" ? (
+              <a href="/project-map.html" className={styles.mapLink}>
+                <FolderTree size={20} aria-hidden="true" />
+                <span>project map</span>
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            ) : null}
           </div>
           {!group ? (
             <div className={styles.categories}>
