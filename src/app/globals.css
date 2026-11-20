@@ -148,6 +148,46 @@ textarea:focus {
   background: #80a5ff;
 }
 
+.newsroom-theme {
+  --background: #f8fafc;
+  --foreground: #111827;
+  --card: rgba(255, 255, 255, 0.9);
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --primary: #ec5f27;
+  --primary-foreground: #ffffff;
+  --secondary: #fff3ed;
+  --secondary-foreground: #9a3412;
+  --muted: #f1f5f9;
+  --muted-foreground: #6b7280;
+  --accent: #fff3ed;
+  --accent-foreground: #111827;
+  --border: #e5e7eb;
+  --input: #d1d5db;
+  --ring: #ec5f27;
+  --brand-yellow: #ffffff;
+  --brand-yellow-soft: #fff3ed;
+  background:
+    linear-gradient(135deg, rgba(255, 243, 237, 0.9), rgba(248, 250, 252, 0.78) 34%, rgba(255, 255, 255, 0.96)),
+    var(--background);
+}
+
+.newsroom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #f59e0b transparent;
+}
+
+.newsroom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.newsroom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #f59e0b;
+}
+
 @media (max-width: 767px) {
   body {
     background:

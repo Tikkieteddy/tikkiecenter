@@ -1,4 +1,4 @@
-// tikkieteddielab: Tailwind CSS PostCSS pipeline.
+// News Risk Monitor: Tailwind CSS PostCSS pipeline.
 const config = {
   plugins: {
     "@tailwindcss/postcss": {},

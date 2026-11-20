@@ -1,7 +1,7 @@
 {
-  "name": "tikkiecenter",
+  "name": "news-risk-monitor",
   "version": "1.0.0",
-  "author": "tikkieteddielab",
+  "author": "News Risk Monitor Team",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,18 +10,24 @@
     "start": "next start --hostname 127.0.0.1",
     "preview": "next start --hostname 127.0.0.1",
     "lint": "eslint .",
-    "test": "npm run build"
+    "test": "npm run build",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
   },
   "dependencies": {
+    "@prisma/client": "^7.8.0",
+    "@types/web-push": "^3.6.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.555.0",
     "next": "^16.2.6",
     "nodemailer": "^8.0.7",
+    "prisma": "^7.8.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "recharts": "^3.5.0",
-    "tailwind-merge": "^3.6.0"
+    "tailwind-merge": "^3.6.0",
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

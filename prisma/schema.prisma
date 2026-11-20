@@ -1,0 +1,296 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum RoleName {
+  ADMIN
+  EDITOR
+  LEGAL_REVIEWER
+  VIEWER
+}
+
+enum RiskLevel {
+  SAFE
+  WARNING
+  BLOCKED
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  REVISION_REQUESTED
+}
+
+enum LegalRiskType {
+  DEFAMATION
+  COMPUTER_CRIME_ACT
+  COPYRIGHT_INFRINGEMENT
+  PDPA
+  SENSITIVE_MINORS
+  GRAPHIC_VIOLENCE
+  NATIONAL_SECURITY
+  HATE_SPEECH
+  ELECTION_RESTRICTION
+  COURT_RESTRICTION
+  GAMBLING_DRUG_CONTENT
+  FAKE_NEWS
+  DEEPFAKE_MANIPULATED_MEDIA
+  ROYAL_INSTITUTION_SENSITIVITY
+  AGRICULTURE_MARKET_SENSITIVITY
+  ANIMAL_DISEASE_SENSITIVITY
+  UNVERIFIED_ACCUSATION
+}
+
+enum LibrarySourceType {
+  FILE
+  LINK
+  TEXT
+}
+
+enum NotificationChannel {
+  WEB_PUSH
+  EMAIL
+  LINE
+}
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+  SKIPPED
+}
+
+model User {
+  id                String            @id @default(cuid())
+  name              String
+  email             String            @unique
+  passwordHash      String?
+  role              Role              @relation(fields: [roleId], references: [id])
+  roleId            String
+  screenings        ScreeningLog[]
+  riskEntries       RiskEntry[]       @relation("RiskEntryCreator")
+  bookmarks         Bookmark[]
+  auditLogs         AuditLog[]
+  pushSubscriptions NotificationSubscription[]
+  notificationLogs  NotificationLog[]
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+}
+
+model Role {
+  id          String   @id @default(cuid())
+  name        RoleName @unique
+  permissions String[]
+  users       User[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Category {
+  id              String           @id @default(cuid())
+  name            String           @unique
+  description     String?
+  riskEntries     RiskEntry[]
+  legalReferences LegalReference[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model Tag {
+  id              String           @id @default(cuid())
+  name            String           @unique
+  riskEntries     RiskEntry[]      @relation("RiskEntryTags")
+  legalReferences LegalReference[] @relation("LegalReferenceTags")
+  createdAt       DateTime         @default(now())
+}
+
+model RiskEntry {
+  id               String         @id @default(cuid())
+  title            String
+  description      String
+  severity         RiskLevel
+  category         Category       @relation(fields: [categoryId], references: [id])
+  categoryId       String
+  legalRiskType    LegalRiskType
+  editorialNote    String?
+  recommendation   String?
+  sourceLink       String?
+  contentType      String         @default("TEXT")
+  vectorText       String?
+  embedding        Json?
+  tags             Tag[]          @relation("RiskEntryTags")
+  createdBy        User?          @relation("RiskEntryCreator", fields: [createdById], references: [id])
+  createdById      String?
+  aiResults        AiResult[]     @relation("MatchedRiskEntries")
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}
+
+model LegalReference {
+  id                  String                @id @default(cuid())
+  title               String
+  summary             String
+  body                String
+  sourceType          LibrarySourceType     @default(TEXT)
+  sourceLink          String?
+  fileName            String?
+  mimeType            String?
+  storageKey          String?
+  activeForEvaluation Boolean               @default(true)
+  legalRiskTypes      LegalRiskType[]
+  category            Category              @relation(fields: [categoryId], references: [id])
+  categoryId          String
+  tags                Tag[]                 @relation("LegalReferenceTags")
+  criteria            EvaluationCriterion[]
+  aiResults           AiResult[]            @relation("MatchedLegalReferences")
+  bookmarks           Bookmark[]
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+}
+
+model EvaluationCriterion {
+  id               String         @id @default(cuid())
+  title            String
+  description      String
+  severity         RiskLevel
+  legalRiskType    LegalRiskType
+  matchTerms       String[]
+  recommendation   String
+  sourceReference  LegalReference @relation(fields: [sourceReferenceId], references: [id])
+  sourceReferenceId String
+  aiResults        AiResult[]     @relation("MatchedEvaluationCriteria")
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}
+
+model ScreeningLog {
+  id              String             @id @default(cuid())
+  user            User?              @relation(fields: [userId], references: [id])
+  userId          String?
+  inputType       String
+  keyword         String?
+  headline        String?
+  newsUrl         String?
+  submittedText   String
+  notes           String?
+  aiResult        AiResult?
+  approvalRequest ApprovalRequest?
+  auditLogs       AuditLog[]
+  checkedAt       DateTime           @default(now())
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+}
+
+model AiResult {
+  id               String       @id @default(cuid())
+  screeningLog     ScreeningLog @relation(fields: [screeningLogId], references: [id])
+  screeningLogId   String       @unique
+  riskLevel        RiskLevel
+  label            String
+  reasoning        String
+  recommendation   String
+  confidence       Float
+  detectedKeywords String[]
+  legalConcerns    LegalRiskType[]
+  matchedCases     RiskEntry[]   @relation("MatchedRiskEntries")
+  matchedReferences LegalReference[] @relation("MatchedLegalReferences")
+  matchedCriteria   EvaluationCriterion[] @relation("MatchedEvaluationCriteria")
+  rawResponse       Json?
+  createdAt        DateTime      @default(now())
+}
+
+model ApprovalRequest {
+  id               String         @id @default(cuid())
+  screeningLog     ScreeningLog   @relation(fields: [screeningLogId], references: [id])
+  screeningLogId   String         @unique
+  requesterName    String
+  requesterEmail   String
+  editorEmail      String
+  title            String
+  newsUrl          String?
+  submittedContent String
+  aiRiskLevel      RiskLevel
+  aiReasoning      String
+  requesterNote    String?
+  approvalStatus   ApprovalStatus @default(PENDING)
+  editorComment    String?
+  reviewedAt       DateTime?
+  auditLogs        AuditLog[]
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}
+
+model Bookmark {
+  id               String          @id @default(cuid())
+  user             User            @relation(fields: [userId], references: [id])
+  userId           String
+  legalReference   LegalReference  @relation(fields: [legalReferenceId], references: [id])
+  legalReferenceId String
+  createdAt        DateTime        @default(now())
+
+  @@unique([userId, legalReferenceId])
+}
+
+model AuditLog {
+  id                String           @id @default(cuid())
+  actor             User?            @relation(fields: [actorId], references: [id])
+  actorId           String?
+  action            String
+  entityType        String
+  entityId          String
+  screeningLog      ScreeningLog?    @relation(fields: [screeningLogId], references: [id])
+  screeningLogId    String?
+  approvalRequest   ApprovalRequest? @relation(fields: [approvalRequestId], references: [id])
+  approvalRequestId String?
+  aiRiskLevel       RiskLevel?
+  approvalStatus    ApprovalStatus?
+  aiReasoning       String?
+  editorComment     String?
+  metadata          Json?
+  createdAt         DateTime         @default(now())
+}
+
+model NotificationSubscription {
+  id        String   @id @default(cuid())
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  userEmail String
+  role      RoleName
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model NotificationLog {
+  id           String              @id @default(cuid())
+  user         User?               @relation(fields: [userId], references: [id])
+  userId       String?
+  channel      NotificationChannel
+  recipient    String
+  title        String
+  body         String
+  targetUrl    String?
+  status       NotificationStatus  @default(PENDING)
+  errorMessage String?
+  metadata     Json?
+  createdAt    DateTime            @default(now())
+}
+
+model AiPrompt {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  purpose     String
+  prompt      String
+  version     Int      @default(1)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

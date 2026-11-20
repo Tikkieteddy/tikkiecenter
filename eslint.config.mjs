@@ -1,4 +1,4 @@
-// tikkieteddielab: lint configuration for the EV power app.
+// News Risk Monitor: lint configuration.
 import js from "@eslint/js";
 
 export default [
